@@ -1,0 +1,49 @@
+- name: Copyng nginx.conf
+  copy: 
+    src=files/nginx.conf
+    dest=/etc/nginx/nginx.conf 
+    mode=644
+    owner=root
+    group=root
+    backup=true
+
+- name: Copyng conf.d
+  copy: 
+    src=files/conf.d/
+    dest=/etc/nginx/conf.d 
+    mode=644
+    owner=root
+    group=root
+
+- name: Copyng certs
+  copy:
+    src=files/certs/
+    dest=/etc/nginx/certs
+    mode=644
+    owner=root
+    group=root
+
+- name: Creating log file
+  file: 
+    path=/var/log/nginx/{{ site_name }}.error.log
+    state=touch
+    mode=0644
+    owner=nginx
+    group=adm
+
+- name: Creating vhosts directory
+  file: 
+    path=/etc/nginx/vhosts
+    state=directory
+
+- name: Copyng site config
+  template:
+    src=site.nginx.j2
+    dest=/etc/nginx/vhosts/{{ site_name }}.conf
+    mode=644
+    owner=root
+    group=root
+
+- name: Verify Nginx config
+  command: nginx -t
+  changed_when: false

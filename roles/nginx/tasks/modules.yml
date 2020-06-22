@@ -1,0 +1,39 @@
+- name: Downloading & Unpacking NGINX sources
+  unarchive:
+    src: "{{ nginx_tarball_url }}"
+    dest: /opt
+    remote_src: yes    
+  register: nginx_source
+
+- name: Preparing module brotli
+  git:
+    repo: https://github.com/google/ngx_brotli.git
+    dest: /opt/ngx_brotli
+
+- name: Building module
+  command:
+    chdir: "{{ nginx_source.dest }}/{{ nginx_version }}"
+    cmd: "./configure --with-compat --add-dynamic-module=../ngx_brotli"
+    creates: "{{ nginx_source.dest }}/{{ nginx_version }}/Makefile"
+
+- name: Compiling module
+  command:
+    chdir: "{{ nginx_source.dest }}/{{ nginx_version }}"
+    cmd: "make modules -j{{ ansible_processor_vcpus}}"    
+    creates: "{{ nginx_source.dest }}/{{ nginx_version }}/objs/*.so"
+
+- name: Find module files
+  find: 
+    paths: "{{ nginx_source.dest }}/{{ nginx_version }}/objs/"
+    patterns: "*.so"
+  register: find_module
+  
+- name: Copy module files
+  copy: 
+    src: "{{ item.path }}"
+    dest: "/etc/nginx/modules"
+    owner: root
+    group: root
+    mode: 0644
+    remote_src: true
+  loop: "{{ find_module.files }}"

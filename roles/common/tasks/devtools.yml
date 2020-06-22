@@ -1,0 +1,8 @@
+- name: Install Additional Dev libriaries
+  dnf:
+    name:
+      - '@Development tools' 
+      - pcre-devel
+      - zlib-devel
+      - openssl-devel
+    state: present

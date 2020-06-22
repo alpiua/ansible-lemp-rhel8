@@ -1,0 +1,21 @@
+- name: Install dnf utils
+  dnf: 
+    name: dnf-utils
+    state: latest
+
+- name: Add Nginx repo with latest versions
+  copy: 
+    src=files/centos8-nginx.repo 
+    dest=/etc/yum.repos.d/nginx.repo 
+    mode=644
+    owner=root
+    group=root
+
+- name: Install nginx
+  dnf:
+    name: nginx
+    enablerepo: nginx-mainline
+    state: latest
+
+- import_tasks: modules.yml
+- import_tasks: configs.yml

@@ -2,7 +2,6 @@
   become: yes
 
   vars:
-    - mysql_root_password: "VhcUI12gpVs"
     - site_user_name: "example"
     - site_name: "example.com"
     - db_name: "test"
@@ -10,6 +9,4 @@
     - db_pass: "test"
 
   roles:
-  - { role : common }
-  - { role : nginx }
   - { role : mysql }

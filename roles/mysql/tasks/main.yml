@@ -1,0 +1,7 @@
+- name: Installing Mysql
+  dnf:
+    name: "{{ mysql_list }}"
+    state: latest
+
+- import_tasks: mysql_root.yml
+- import_tasks: phpmyadmin.yml

@@ -1,0 +1,4 @@
+mysql_list:     
+    - mysql
+    - mysql-server
+    - mysqltuner

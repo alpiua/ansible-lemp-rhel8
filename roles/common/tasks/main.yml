@@ -1,12 +1,13 @@
 - name: Update system
   dnf:
     name: "*"
+    update_cache: true
     state: latest
 
 - name: Install core soft
-  package: 
-  #dnf: 
+  dnf: 
     name: "{{ centos8_list }}"
     state: latest
 
 - import_tasks: devtools.yml
+- import_tasks: python.yml

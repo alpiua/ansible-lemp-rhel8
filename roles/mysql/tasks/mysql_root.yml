@@ -1,0 +1,60 @@
+# (c) https://stackoverflow.com/questions/50563845/how-do-i-set-and-save-a-random-password-for-the-mysql-mariadb-root-user-using-an
+- name: "Check if we already have a root password config"
+  stat:
+    path: /root/.my.cnf
+  register: mysql_root_result
+
+- name: "Generate database root password if needed"
+  set_fact:
+    mysql_root_passwd: "{{ lookup('password','/dev/null chars=ascii_letters,digits length=16') }}"
+  when: mysql_root_result.stat.exists == False
+
+- name: "Save new root password in temporary file"
+  template:
+    src: my_passwd.cnf.j2
+    dest: /root/.my.cnf.new
+    owner: root
+    group: root
+    mode: 0400
+  when: mysql_root_result.stat.exists == False
+  with_items:
+  - user: root
+    password: "{{ mysql_root_passwd }}"
+
+- name: Change MySQL root password
+  mysql_user:
+    name: root
+    password: "{{ mysql_root_passwd}}"
+    check_implicit_admin: true
+    login_user:     "root"
+    login_password: ""
+  no_log: true
+  when: mysql_root_result.stat.exists == False
+
+- name: "Rename config with root password to correct name - Step 1 - link"
+  file:
+    state: hard
+    src: /root/.my.cnf.new
+    dest: /root/.my.cnf
+    force: yes
+  when: mysql_root_result.stat.exists == False
+
+- name: "Rename config with root password to correct name - Step 2 - unlink"
+  file:
+    state: absent
+    path: /root/.my.cnf.new
+  when: mysql_root_result.stat.exists == False
+
+- name: "Clean up additional root users"
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    check_implicit_admin: yes
+    state: absent
+  no_log: true
+  with_items:
+  - "::1"
+  - 127.0.0.1
+  - "{{ ansible_fqdn }}"
+  - "{{ inventory_hostname }}"
+  - "{{ ansible_hostname }}"

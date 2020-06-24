@@ -19,3 +19,9 @@
 
 - import_tasks: modules.yml
 - import_tasks: configs.yml
+
+- name: Trying to start nginx service
+  service:
+    name: nginx
+    enabled: true
+    state: started

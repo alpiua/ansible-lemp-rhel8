@@ -1,0 +1,71 @@
+- name: Checking phpMyAdmin Installation
+  stat: 
+    path: /etc/phpMyAdmin/config.inc.php
+  register: pma_config
+
+- name: Create pma_tmp file variable
+  set_fact:
+    pma_tmp: /tmp/pma_link.txt
+    blowfish_secret: "{{ lookup('password','/dev/null chars=ascii_letters,digits length=32') }}"
+  when: pma_config.stat.exists == false
+
+- name: Get phpmyadmin URL
+  shell: 
+    cmd: "wget https://www.phpmyadmin.net/home_page/version.txt -q -O- > {{ pma_tmp }}"
+    warn: false
+  args:
+    creates: "{{ pma_tmp }}"
+  when: pma_config.stat.exists == false
+
+- name: Get version
+  shell: "cat {{ pma_tmp }} | cut -d '\n' -f 1"
+  register: pma_version
+  changed_when: false
+  when: pma_config.stat.exists == false
+
+- name: Get URL
+  shell: "cat {{ pma_tmp }} | cut -d '\n' -f 3"
+  register: pma_url
+  changed_when: false
+  when: pma_config.stat.exists == false
+
+- name: Download latest phpmyadmin 
+  unarchive:
+    src: "{{ pma_url.stdout }}"    
+    dest: /opt
+    remote_src: yes
+  register: pma_source
+  when: pma_config.stat.exists == false
+
+- name: Extract files
+  copy:
+    src: "{{ pma_source.dest }}/phpMyAdmin-{{ pma_version.stdout }}-all-languages/"
+    dest: /usr/share/phpMyAdmin
+    remote_src: yes
+    mode: 0644
+    owner: root
+    group: root
+  when: pma_config.stat.exists == false
+
+- name: Create additional directories
+  file:
+    path: "/var/lib/phpMyAdmin/{{ item }}"
+    state: directory
+    mode: 0770
+    owner: nginx
+    group: nginx
+  loop:
+    - upload
+    - save
+    - temp
+    - '../../../etc/phpMyAdmin'
+  when: pma_config.stat.exists == false
+
+- name: Setuping phpMyAdmin config
+  template:
+    src: config.inc.php.j2
+    dest: /etc/phpMyAdmin/config.inc.php
+    mode: 0640
+    owner: root
+    group: root
+  when: pma_config.stat.exists == false

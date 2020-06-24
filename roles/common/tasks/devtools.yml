@@ -5,4 +5,6 @@
       - pcre-devel
       - zlib-devel
       - openssl-devel
+      - python3-devel
+      - mysql-devel
     state: present

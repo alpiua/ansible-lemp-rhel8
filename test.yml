@@ -1,0 +1,23 @@
+- hosts: localhost
+
+  tasks:
+
+    - name: Get phpmyadmin version
+      shell: 
+        "wget https://www.phpmyadmin.net/home_page/version.txt -q -O- | cut -d '\n' -f 1"
+      register: phpmyadmin_version
+    
+    - name: Get phpmyadmin URL
+      shell: 
+        "wget https://www.phpmyadmin.net/home_page/version.txt -q -O- | cut -d '\n' -f 3"
+      register: phpmyadmin_url
+
+    - name: Download latest phpmyadmin 
+      unarchive:
+        src: "{{ phpmyadmin_url.stdout }}"
+        dest: /tmp/123
+        remote_src: yes
+      
+    #  DATA="$("
+  # URL="$(echo $DATA | cut -d ' ' -f 3)"
+  #VER="$(echo $DATA | cut -d ' ' -f 1)" 

@@ -1,0 +1,12 @@
+- hosts: web
+  become: yes
+
+  vars:
+    - install php_56: false
+    - install php_70: false
+    - install php_71: true
+    
+    - install php_74: true
+
+  roles:
+  - { role : php }

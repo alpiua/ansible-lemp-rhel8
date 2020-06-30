@@ -45,11 +45,6 @@
     mode: 0644
     owner: root
     group: root
-  when: pma_config.stat.exists == false
-
-- 
-    owner: nginx
-    group: nginx
   loop:
     - upload
     - save

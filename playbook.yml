@@ -13,3 +13,4 @@
   - { role : common }
   - { role : nginx }
   - { role : mysql }
+  - { role : php }

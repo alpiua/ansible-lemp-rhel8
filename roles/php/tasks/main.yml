@@ -1,0 +1,19 @@
+- name: Installing Remo repo
+  shell:
+    cmd: dnf -C repolist enabled -v  | grep '^Repo-id' | awk '$3 == "remi-safe" {print "enabled"}'
+    warn: no
+  check_mode: no
+  changed_when: false
+  register: remi_repo
+
+  #- name: Enable 
+  #  command:
+  #      cmd: dnf -y 
+  #      warn: no
+  #  when: remi_repo.stdout == 'enabled'
+  
+- name: Installing System PHP
+  dnf:
+    name: "{{ php_packages }}"
+    enablerepo: "php:remi-{{ system_php }}"
+    state: latest

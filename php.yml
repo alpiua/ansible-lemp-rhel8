@@ -2,11 +2,15 @@
   become: yes
 
   vars:
-    - install php_56: false
-    - install php_70: false
-    - install php_71: true
-    
-    - install php_74: true
+    - system_php: 7.2
+    - secondary_php:
+        php56: false
+        php70: true
+        php71: false
+        php72: false
+        php73: false
+        php74: false
+        php80: false
 
   roles:
   - { role : php }

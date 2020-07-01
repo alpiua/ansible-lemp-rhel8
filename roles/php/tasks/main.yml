@@ -6,14 +6,26 @@
   changed_when: false
   register: remi_repo
 
-  #- name: Enable 
-  #  command:
-  #      cmd: dnf -y 
-  #      warn: no
-  #  when: remi_repo.stdout == 'enabled'
-  
+
+- import_tasks: clean_php.yml
+  when: system_php_reinstall or secondary_php_reinstall
+
+
+- name: Choose PHP REMI Repo
+  shell: |
+    dnf module enable -y "php:remi-{{ system_php }}"
+  check_mode: no
+  changed_when: false
+  args:  
+    warn: false
+  when: remi_repo.stdout == 'enabled'
+
+
 - name: Installing System PHP
   dnf:
     name: "{{ php_packages }}"
-    enablerepo: "php:remi-{{ system_php }}"
     state: latest
+
+
+- import_tasks: secondary_php.yml
+  when: secondary_php['php56'] or secondary_php['php70'] or secondary_php['php71'] or secondary_php['php72'] or secondary_php['php73'] or secondary_php['php74'] or secondary_php['php80']

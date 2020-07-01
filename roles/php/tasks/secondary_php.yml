@@ -1,0 +1,52 @@
+- name: Include name-specific variables
+  include_vars: "{{ item }}"
+  with_fileglob:
+    - "{{ role_path }}/vars/php56.yml"
+    - "{{ role_path }}/vars/php70.yml"
+    - "{{ role_path }}/vars/php71.yml"
+    - "{{ role_path }}/vars/php72.yml"
+    - "{{ role_path }}/vars/php73.yml"
+    - "{{ role_path }}/vars/php74.yml"
+    - "{{ role_path }}/vars/php80.yml"
+
+- name: Installing secondary PHP 5.6.
+  dnf:
+    name: "{{ php56_packages }}"
+    state: present
+  when: secondary_php['php56']
+
+- name: Installing secondary PHP 7.0.
+  dnf:
+    name: "{{ php70_packages }}"
+    state: present
+  when: secondary_php['php70']
+
+- name: Installing secondary PHP 7.1.
+  dnf:
+    name: "{{ php71_packages }}"
+    state: present
+  when: secondary_php['php71']
+
+- name: Installing secondary PHP 7.2.
+  dnf:
+    name: "{{ php72_packages }}"
+    state: present
+  when: secondary_php['php72']
+
+- name: Installing secondary PHP 7.3.
+  dnf:
+    name: "{{ php73_packages }}"
+    state: present
+  when: secondary_php['php73']
+
+- name: Installing secondary PHP 7.4.
+  dnf:
+    name: "{{ php74_packages }}"
+    state: present
+  when: secondary_php['php74']
+
+- name: Installing secondary PHP 8.0.
+  dnf:
+    name: "{{ php80_packages }}"
+    state: present
+  when: secondary_php['php80']

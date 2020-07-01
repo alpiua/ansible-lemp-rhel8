@@ -2,15 +2,17 @@
   become: yes
 
   vars:
-    - system_php: 7.2
+    - system_php: "7.4"  # system php only 7.2,7.3,7.4 allowed for Centos 8
     - secondary_php:
         php56: false
-        php70: true
+        php70: false
         php71: false
         php72: false
         php73: false
         php74: false
         php80: false
+    - system_php_reinstall: true
+    - secondary_php_reinstall: false
 
   roles:
-  - { role : php }
+    - { role : php }

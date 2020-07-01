@@ -15,3 +15,4 @@ centos8_list:
     - certbot 
     - python3-certbot
     - net-tools
+    - dnf-plugins-core

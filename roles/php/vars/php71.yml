@@ -1,0 +1,20 @@
+php71_packages:
+  - php71-php
+  - php71-php-bcmath
+  - php71-php-cli
+  - php71-php-common
+  - php71-php-fpm
+  - php71-php-gd
+  - php71-php-intl
+  - php71-php-json
+  - php71-php-mbstring
+  - php71-php-mysqlnd
+  - php71-php-odbc
+  - php71-php-opcache
+  - php71-php-pdo
+  - php71-php-pear.noarch
+  - php71-php-pecl-apcu
+  - php71-php-pecl-zip
+  - php71-php-process
+  - php71-php-soap
+  - php71-php-xml

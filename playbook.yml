@@ -2,7 +2,6 @@
   become: yes
 
   vars:
-    - mysql_root_password: "VhcUI12gpVs"
     - site_user_name: "example"
     - site_name: "example.com"
     - db_name: "test"
@@ -14,3 +13,6 @@
   - { role : nginx }
   - { role : mysql }
   - { role : php }
+  when:
+    - ansible_facts['distribution'] == "CentOS"
+    - ansible_facts['distribution_major_version'] == "8"

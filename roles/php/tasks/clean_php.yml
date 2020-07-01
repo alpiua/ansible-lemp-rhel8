@@ -1,0 +1,20 @@
+- name: Check PHP version
+  shell: |
+    php -r 'echo PHP_VERSION . "\n";' | head -c 3
+  check_mode: no
+  changed_when: false
+  register: php_installed
+
+- name: Remove existing PHP
+  dnf:
+    name: php*
+    state: absent
+  when: 
+    - (php_installed.stdout != system_php) or secondary_php_reinstall
+
+- name: Clean PHP repo selection
+  shell: |
+    dnf module reset php -y
+  args:
+    warn: false
+  when: php_installed.stdout != system_php

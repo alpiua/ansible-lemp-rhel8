@@ -2,6 +2,7 @@
 #test1.ansitest.org ansible_ssh_host=10.10.64.141 
 #ntest2.ansitest.org ansible_ssh_host=10.10.64.142
 alpi.pp.ua
+192.168.88.10
 
 [web:vars]
 ansible_ssh_user=alpi

@@ -13,6 +13,3 @@
   - { role : nginx }
   - { role : mysql }
   - { role : php }
-  when:
-    - ansible_facts['distribution'] == "CentOS"
-    - ansible_facts['distribution_major_version'] == "8"

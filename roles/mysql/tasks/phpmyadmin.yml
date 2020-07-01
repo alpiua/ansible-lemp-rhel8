@@ -45,6 +45,13 @@
     mode: 0644
     owner: root
     group: root
+  when: pma_config.stat.exists == false
+  
+- name: Create additional directories
+  file:
+    path: "/var/lib/phpMyAdmin/{{ item }}"
+    state: directory
+    mode: 0770 
   loop:
     - upload
     - save

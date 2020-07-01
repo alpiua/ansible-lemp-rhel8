@@ -1,0 +1,16 @@
+---
+ # system php only 7.2,7.3,7.4 allowed for Centos 8
+system_php: "7.4" 
+
+secondary_php:
+   php56: false
+   php70: true
+   php71: false
+   php72: false
+   php73: false
+   php74: false
+   php80: false
+
+system_php_reinstall: true
+
+secondary_php_reinstall: false

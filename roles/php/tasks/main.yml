@@ -1,15 +1,19 @@
-- name: Installing Remo repo
+- name: Installing Remo repo 
+  command: dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  args:  
+    warn: no
+    creates: /etc/yum.repos.d/remi-safe.repo
+
+- name: Checking Remo repo
   shell:
     cmd: dnf -C repolist enabled -v  | grep '^Repo-id' | awk '$3 == "remi-safe" {print "enabled"}'
-    warn: no
+    warn: false 
   check_mode: no
   changed_when: false
   register: remi_repo
 
-
 - import_tasks: clean_php.yml
   when: system_php_reinstall or secondary_php_reinstall
-
 
 - name: Choose PHP REMI Repo
   shell: |

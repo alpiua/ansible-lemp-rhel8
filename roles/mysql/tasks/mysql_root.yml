@@ -4,7 +4,7 @@
     path: /root/.my.cnf
   register: mysql_root_result
 
-- name: "Generate database root password if needed"
+- name: "Generate mysql root password"
   set_fact:
     mysql_root_passwd: "{{ lookup('password','/dev/null chars=ascii_letters,digits length=16') }}"
   when: mysql_root_result.stat.exists == False
@@ -28,7 +28,7 @@
     check_implicit_admin: true
     login_user:     "root"
     login_password: ""
-  no_log: true
+    no_log: true
   when: mysql_root_result.stat.exists == False
 
 - name: "Rename config with root password to correct name - Step 1 - link"

@@ -2,14 +2,35 @@
   become: yes
 
   vars:
-    - site_user_name: "example"
-    - site_name: "example.com"
-    - db_name: "test"
-    - db_user: "test"
-    - db_pass: "test"
+    - admin_user: "support"
+    - site_user_name: "aquatherm"
+    - site_name: "aquatherm72.ru"
+    - tmp_site_name: "aquatherm.olua.net"
+    - subdomain:
+       - dev
+        
+      #    - db_name: "test"
+      #    - db_user: "test"
+      #    - db_pass: "test"
 
   roles:
-  - { role : common }
-  - { role : nginx }
-  - { role : mysql }
-  - { role : php }
+      # add ssh and firewall role:
+      #   create sftp users
+      #   sshd_config for secure and sftp
+    - role: common
+    - role: nginx
+      # add config
+      #    Install Mysql8 or Mariadb. Different pass approach
+    - role: mysql
+      tags: mysql
+    - role: php
+      tags: php
+      vars:
+        - system_php: "7.4"  # system php only 7.2,7.3,7.4,8.0,8.1
+        - reinstall_php: false
+        - secondary_php:     # can choose from 5.6 to 8.1
+          - name: php71
+            install: false
+          - name: php80
+            install: false
+    - role: backup

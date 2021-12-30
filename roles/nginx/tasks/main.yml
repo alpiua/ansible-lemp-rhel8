@@ -1,11 +1,6 @@
-- name: Install dnf utils
-  dnf: 
-    name: dnf-utils
-    state: latest
-
 - name: Add Nginx repo with latest versions
   copy: 
-    src=files/centos8-nginx.repo 
+    src=files/rhel8.repo 
     dest=/etc/yum.repos.d/nginx.repo 
     mode=644
     owner=root
@@ -19,6 +14,7 @@
 
 - import_tasks: modules.yml
 - import_tasks: configs.yml
+- import_tasks: subdomain.yml
 
 - name: Trying to start nginx service
   service:

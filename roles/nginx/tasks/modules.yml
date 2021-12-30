@@ -1,3 +1,8 @@
+- name: Getting nginx version
+  shell: 
+    cmd: rpm -q --qf "%{VERSION}\n" nginx
+  register: nginx_version
+
 - name: Downloading & Unpacking NGINX sources
   unarchive:
     src: "{{ nginx_tarball_url }}"
@@ -12,19 +17,19 @@
 
 - name: Building module
   command:
-    chdir: "{{ nginx_source.dest }}/{{ nginx_version }}"
+    chdir: "{{ nginx_source.dest }}/nginx-{{ nginx_version.stdout }}"
     cmd: "./configure --with-compat --add-dynamic-module=../ngx_brotli"
-    creates: "{{ nginx_source.dest }}/{{ nginx_version }}/Makefile"
+    creates: "{{ nginx_source.dest }}/nginx-{{ nginx_version.stdout }}/Makefile"
 
 - name: Compiling module
   command:
-    chdir: "{{ nginx_source.dest }}/{{ nginx_version }}"
+    chdir: "{{ nginx_source.dest }}/nginx-{{ nginx_version.stdout }}"
     cmd: "make modules -j{{ ansible_processor_vcpus}}"    
-    creates: "{{ nginx_source.dest }}/{{ nginx_version }}/objs/*.so"
+    creates: "{{ nginx_source.dest }}/nginx-{{ nginx_version.stdout }}/objs/*.so"
 
 - name: Find module files
   find: 
-    paths: "{{ nginx_source.dest }}/{{ nginx_version }}/objs/"
+    paths: "{{ nginx_source.dest }}/nginx-{{ nginx_version.stdout }}/objs/"
     patterns: "*.so"
   register: find_module
   

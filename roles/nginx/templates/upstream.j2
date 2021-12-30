@@ -1,0 +1,18 @@
+# PHP-FPM FastCGI server
+# network or unix domain socket configuration
+
+upstream {{ site_name }} {
+        server unix:/var/run/php-fpm/{{ site_name }}.sock;
+}
+
+upstream pma {
+        server unix:/var/run/php-fpm/pma.sock;
+}
+
+#upstream php74 {
+#        server unix:/var/run/php-fpm/php74.sock;
+#}
+#
+#upstream php71 {
+#        server unix:/var/opt/remi/php71/run/php-fpm/php71.sock;
+#}

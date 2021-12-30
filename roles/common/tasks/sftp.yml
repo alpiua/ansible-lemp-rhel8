@@ -1,0 +1,11 @@
+ssh:
+add alpi to wheel
+change port
+disable root login
+
+sftp:
+  
+create group
+add user to group
+change ssh config
+change permissions to /home to root:sftp-users

@@ -1,3 +1,5 @@
+set $admin SET_ADMIN_DIR
+
 location /$admin/ {
     if (!-e $request_filename) {
         rewrite ^/.*$ /$admin/index.php last;

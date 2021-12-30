@@ -1,0 +1,17 @@
+- name: Creating subdomain directories
+  file: 
+    path: "/home/{{ site_user_name }}/www/{{ item }}"
+    state: directory
+    owner: "{{ site_user_name }}"
+    group: "{{ site_user_name }}"
+    mode: 0755
+  loop: "{{ subdomain }}"
+
+- name: Copyng site config
+  template:
+    src: basic-php.j2
+    dest: "/etc/nginx/vhosts/{{ item }}.conf"
+    mode: 0644
+    owner: root
+    group: root
+  loop: "{{ subdomain }}"

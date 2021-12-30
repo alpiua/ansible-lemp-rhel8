@@ -19,19 +19,22 @@
   copy:
     src: files/certs/
     dest: /etc/nginx/certs
-    mode: 644
+    mode: 640
     owner: root
-    group: root
+    group: nginx
 
 - name: Creating log file
   file: 
-    path: /var/log/nginx/{{ site_name }}.error.log
+    path: "{{ item }}"
     state: touch
     mode: 0644
     owner: nginx
     group: adm
     modification_time: preserve
     access_time: preserve
+  loop:
+    - "/var/log/nginx/{{ site_name }}.error.log"
+    - "/var/log/nginx/{{ site_name }}.access.log"
 
 - name: Creating vhosts directory
   file: 
@@ -45,6 +48,11 @@
     mode: 644
     owner: root
     group: root
+
+- name: Copying upstream config
+  template:
+    src: upstream.j2
+    dest: /etc/nginx/conf.d/upstream.conf
 
 - name: Verify Nginx config
   command: nginx -t

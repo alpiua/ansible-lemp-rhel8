@@ -1,0 +1,29 @@
+- name: Creating PhpMyAdmin pool directory
+  file: 
+    path: "/var/lib/php/session-pma"
+    state: directory
+    owner: nginx
+    group: nginx
+    mode: 0750
+
+- name: Creating PHP pool directories
+  file: 
+    path: "/var/lib/php/{{ item }}"
+    state: directory
+    owner: "{{ site_user_name }}"
+    group: "{{ site_user_name }}"
+    mode: 0750
+  loop:
+    - "wsdlcache-{{ site_name }}"
+    - "session-{{ site_name }}"
+    - "opcache-{{ site_name }}"
+
+- name: Copyng PHP pool config
+  template:
+    src: site.j2
+    dest: "/etc/php-fpm.d/{{ site_name }}.conf"
+
+- name: Copyng PhpMyAdmin pool
+  template:
+    src: pma.j2
+    dest: "/etc/php-fpm.d/pma.conf"

@@ -4,10 +4,25 @@
     update_cache: true
     state: latest
 
+- name: Install epel release
+  dnf:
+    name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
+    disable_gpg_check: true
+    state: present
+
 - name: Install core soft
   dnf: 
-    name: "{{ centos8_list }}"
+    name: "{{ rhel8_list }}"
     state: latest
 
 - import_tasks: devtools.yml
 - import_tasks: python.yml
+
+- name: Create user
+  user:
+    name: "{{ item.name }}"
+    groups: "{{ item.groups }}"
+  loop:
+    - { name: "{{ admin_user }}", groups: "wheel" }
+    - { name: "{{ site_user_name }}", groups: "" }
+  tags: user

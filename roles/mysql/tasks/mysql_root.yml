@@ -1,4 +1,3 @@
-# (c) https://stackoverflow.com/questions/50563845/how-do-i-set-and-save-a-random-password-for-the-mysql-mariadb-root-user-using-an
 - name: "Check if we already have a root password config"
   stat:
     path: /root/.my.cnf
@@ -26,9 +25,7 @@
     name: root
     password: "{{ mysql_root_passwd}}"
     check_implicit_admin: true
-    login_user:     "root"
-    login_password: ""
-    no_log: true
+    login_unix_socket: /var/lib/mysql/mysql.sock
   when: mysql_root_result.stat.exists == False
 
 - name: "Rename config with root password to correct name - Step 1 - link"
@@ -48,10 +45,11 @@
 - name: "Clean up additional root users"
   mysql_user:
     name: root
+    login_unix_socket: /var/lib/mysql/mysql.sock
     host: "{{ item }}"
     check_implicit_admin: yes
     state: absent
-  no_log: true
+  no_log: false
   with_items:
   - "::1"
   - 127.0.0.1

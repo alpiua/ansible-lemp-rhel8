@@ -3,5 +3,17 @@
     name: "{{ mysql_list }}"
     state: latest
 
-    #- import_tasks: mysql_root.yml
+- name: Starting mysql service
+  service: 
+    name: mysqld
+    enabled: true
+    state: started
+  register: mysql_service
+  
+- debug:
+    var: mysql_service_state
+    
+- import_tasks: mysql_root.yml
+  when: mysql_service.state == 'started'
+
 - import_tasks: phpmyadmin.yml

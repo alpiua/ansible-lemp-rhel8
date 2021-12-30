@@ -9,8 +9,7 @@
   dnf:
     name: php*
     state: absent
-  when: 
-    - (php_installed.stdout != system_php) or secondary_php_reinstall
+  when: (php_installed.stdout != system_php) or reinstall_php
 
 - name: Clean PHP repo selection
   shell: |

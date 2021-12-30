@@ -1,20 +1,3 @@
-php_packages:
-  - php
-  - php-bcmath
-  - php-cli
-  - php-common
-  - php-fpm
-  - php-gd
-  - php-intl
-  - php-json
-  - php-mbstring
-  - php-mysqlnd
-  - php-odbc
-  - php-opcache
-  - php-pdo
-  - php-pear.noarch
-  - php-pecl-apcu
-  - php-pecl-zip
-  - php-process
-  - php-soap
-  - php-xml
+---
+ # system php only 7.2,7.3,7.4,8.0,8.1 
+system_php: "7.4"

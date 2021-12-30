@@ -1,6 +1,5 @@
-centos8_list:
+rhel8_list:
     - dnf-utils
-    - epel-release        
     - git
     - tar
     - zip

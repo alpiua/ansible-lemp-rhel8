@@ -1,16 +1,59 @@
----
- # system php only 7.2,7.3,7.4 allowed for Centos 8
-system_php: "7.4" 
+php_packages:
+  - php
+  - php-bcmath
+  - php-cli
+  - php-common
+  - php-fpm
+  - php-gd
+  - php-intl
+  - php-json
+  - php-mbstring
+  - php-mysqlnd
+  - php-odbc
+  - php-opcache
+  - php-pdo
+  - php-pear.noarch
+  - php-pecl-apcu
+  - php-pecl-zip
+  - php-process
+  - php-soap
+  - php-xml
+
+secondary_php_packages: 
+  - "{{ item.name }}-php"
+  - "{{ item.name }}-php-bcmath"
+  - "{{ item.name }}-php-cli"
+  - "{{ item.name }}-php-common"
+  - "{{ item.name }}-php-fpm"
+  - "{{ item.name }}-php-gd"
+  - "{{ item.name }}-php-intl"
+  - "{{ item.name }}-php-json"
+  - "{{ item.name }}-php-mbstring"
+  - "{{ item.name }}-php-mysqlnd"
+  - "{{ item.name }}-php-odbc"
+  - "{{ item.name }}-php-opcache"
+  - "{{ item.name }}-php-pdo"
+  - "{{ item.name }}-php-pear.noarch"
+  - "{{ item.name }}-php-pecl-apcu"
+  - "{{ item.name }}-php-pecl-zip"
+  - "{{ item.name }}-php-process"
+  - "{{ item.name }}-php-soap"
+  - "{{ item.name }}-php-xml"
 
 secondary_php:
-   php56: false
-   php70: true
-   php71: false
-   php72: false
-   php73: false
-   php74: false
-   php80: false
-
-system_php_reinstall: true
-
-secondary_php_reinstall: false
+  - name: php56
+    install: false
+  - name: php70
+    install: false
+  - name: php71
+    install: false
+  - name: php72
+    install: false
+  - name: php73
+    install: false
+  - name: php74
+    install: false
+  - name: php80
+    install: false
+  - name: php81
+    install: false

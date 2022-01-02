@@ -43,7 +43,7 @@
 
 - name: Copyng site config
   template:
-    src: site.nginx.j2
+    src: "{{ site_template }}"
     dest: /etc/nginx/vhosts/{{ site_name }}.conf
     mode: 644
     owner: root
@@ -51,9 +51,5 @@
 
 - name: Copying upstream config
   template:
-    src: upstream.j2
+    src: upstream.conf.j2
     dest: /etc/nginx/conf.d/upstream.conf
-
-- name: Verify Nginx config
-  command: nginx -t
-  changed_when: false

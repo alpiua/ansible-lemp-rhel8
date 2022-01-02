@@ -13058,3 +13058,3131 @@ item.install }}
 
 
 2021-12-30 09:55:02,794 p=1222168 u=oleksii n=ansible | 82.146.36.203              : ok=8    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+2022-01-02 20:25:40,562 p=88337 u=oleksii n=ansible | ERROR! this task 'imort_tasks' has extra params, which is only allowed in the following modules: ansible.builtin.include, import_role, include_tasks, import_tasks, ansible.builtin.group_by, command, ansible.builtin.meta, ansible.builtin.set_fact, ansible.legacy.script, win_command, ansible.legacy.win_shell, script, ansible.builtin.shell, set_fact, ansible.legacy.group_by, ansible.legacy.import_role, raw, ansible.legacy.command, ansible.legacy.include_tasks, shell, ansible.legacy.include_role, ansible.builtin.win_shell, include, ansible.legacy.include_vars, ansible.legacy.add_host, meta, ansible.builtin.win_command, ansible.legacy.import_tasks, ansible.legacy.set_fact, ansible.windows.win_shell, ansible.builtin.include_role, ansible.windows.win_command, ansible.legacy.raw, win_shell, ansible.legacy.meta, ansible.builtin.include_vars, ansible.builtin.include_tasks, ansible.legacy.include, add_host, include_role, include_vars, ansible.builtin.import_tasks, ansible.legacy.shell, ansible.builtin.add_host, ansible.builtin.import_role, ansible.builtin.raw, ansible.legacy.win_command, ansible.builtin.command, ansible.builtin.script, group_by
+
+The error appears to be in '/home/oleksii/Documents/ansible/install/roles/nginx/tasks/main.yml': line 18, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+- import_tasks: subdomain.yml
+- imort_tasks: certbot
+  ^ here
+
+2022-01-02 20:25:57,709 p=88345 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:25:57,770 p=88345 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:00,667 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:00,718 p=88345 u=oleksii n=ansible |  _______________________________ 
+< TASK [common : Update system] >
+ ------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:14,051 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:14,122 p=88345 u=oleksii n=ansible |  ______________________________________ 
+< TASK [common : Install epel release] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:22,061 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:22,137 p=88345 u=oleksii n=ansible |  ___________________________________ 
+< TASK [common : Install core soft] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:29,385 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:29,431 p=88345 u=oleksii n=ansible |  ___________________________________________________ 
+< TASK [common : Install Additional Dev libriaries] >
+ --------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:36,295 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:36,368 p=88345 u=oleksii n=ansible |  ______________________________________________ 
+< TASK [common : Make sure pymysql is present] >
+ ---------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:38,499 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:38,559 p=88345 u=oleksii n=ansible |  __________________________________________________ 
+< TASK [common : Install the MySQL-Python Library] >
+ -------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:40,376 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:40,443 p=88345 u=oleksii n=ansible |  _____________________________ 
+< TASK [common : Create user] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:42,000 p=88345 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'support', 'groups': 'wheel'})
+2022-01-02 20:26:43,565 p=88345 u=oleksii n=ansible | changed: [82.146.36.203] => (item={'name': 'aquatherm', 'groups': ''})
+2022-01-02 20:26:43,644 p=88345 u=oleksii n=ansible |  ____________________________________________________ 
+< TASK [nginx : Add Nginx repo with latest versions] >
+ ---------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:46,413 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:46,480 p=88345 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Install nginx] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:53,263 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:53,315 p=88345 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Getting nginx version] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:54,727 p=88345 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 20:26:54,800 p=88345 u=oleksii n=ansible |  ______________________________________________________ 
+< TASK [nginx : Downloading & Unpacking NGINX sources] >
+ ------------------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:26:57,728 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:26:57,794 p=88345 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Preparing module brotli] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:00,165 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:00,239 p=88345 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Building module] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:01,566 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:01,624 p=88345 u=oleksii n=ansible |  _________________________________ 
+< TASK [nginx : Compiling module] >
+ --------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:02,926 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:02,996 p=88345 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Find module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:04,346 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:04,409 p=88345 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copy module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:05,794 p=88345 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_filter_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 5735200, 'inode': 390566, 'dev': 64772, 'nlink': 1, 'atime': 1640815445.0730517, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 20:27:06,974 p=88345 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_static_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 80144, 'inode': 390567, 'dev': 64772, 'nlink': 1, 'atime': 1640815446.1770544, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 20:27:07,049 p=88345 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copyng nginx.conf] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:09,046 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:09,105 p=88345 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Copyng conf.d] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:27,666 p=88345 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 20:27:27,731 p=88345 u=oleksii n=ansible |  _____________________________ 
+< TASK [nginx : Copyng certs] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:33,700 p=88345 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 20:27:33,766 p=88345 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Creating log file] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:35,173 p=88345 u=oleksii n=ansible | changed: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.error.log)
+2022-01-02 20:27:36,376 p=88345 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.access.log)
+2022-01-02 20:27:36,410 p=88345 u=oleksii n=ansible |  __________________________________________ 
+< TASK [nginx : Creating vhosts directory] >
+ ------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:37,613 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:37,676 p=88345 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:40,220 p=88345 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 20:27:40,276 p=88345 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Copying upstream config] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:42,351 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:42,413 p=88345 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:43,654 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:43,715 p=88345 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Creating subdomain directories] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:44,978 p=88345 u=oleksii n=ansible | changed: [82.146.36.203] => (item=dev)
+2022-01-02 20:27:45,045 p=88345 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:47,504 p=88345 u=oleksii n=ansible | changed: [82.146.36.203] => (item=dev)
+2022-01-02 20:27:47,574 p=88345 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:54,776 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:54,830 p=88345 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:56,914 p=88345 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 20:27:56,968 p=88345 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:56,990 p=88345 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"msg": "Invalid data passed to 'loop', it requires a list, got this instead: subdomain. Hint: If you passed a list/dict of just one element, try adding wantlist=True to your lookup invocation or use q/query instead of lookup."}
+2022-01-02 20:27:57,026 p=88345 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 20:27:57,026 p=88345 u=oleksii n=ansible | 82.146.36.203              : ok=29   changed=8    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:07:41,303 p=89830 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:07:41,346 p=89830 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:07:41,611 p=89830 u=oleksii n=ansible |  [ERROR]: User interrupted execution
+
+2022-01-02 21:14:29,774 p=90007 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:14:29,839 p=90007 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:14:33,075 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:14:33,132 p=90007 u=oleksii n=ansible |  _______________________________ 
+< TASK [common : Update system] >
+ ------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:14:46,667 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:14:46,730 p=90007 u=oleksii n=ansible |  ______________________________________ 
+< TASK [common : Install epel release] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:14:54,831 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:14:54,880 p=90007 u=oleksii n=ansible |  ___________________________________ 
+< TASK [common : Install core soft] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:01,983 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:02,054 p=90007 u=oleksii n=ansible |  ___________________________________________________ 
+< TASK [common : Install Additional Dev libriaries] >
+ --------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:09,769 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:09,831 p=90007 u=oleksii n=ansible |  ______________________________________________ 
+< TASK [common : Make sure pymysql is present] >
+ ---------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:11,835 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:11,901 p=90007 u=oleksii n=ansible |  __________________________________________________ 
+< TASK [common : Install the MySQL-Python Library] >
+ -------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:13,788 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:13,855 p=90007 u=oleksii n=ansible |  _____________________________ 
+< TASK [common : Create user] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:15,345 p=90007 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'support', 'groups': 'wheel'})
+2022-01-02 21:15:16,645 p=90007 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'aquatherm', 'groups': ''})
+2022-01-02 21:15:16,706 p=90007 u=oleksii n=ansible |  ____________________________________________________ 
+< TASK [nginx : Add Nginx repo with latest versions] >
+ ---------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:19,214 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:19,269 p=90007 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Install nginx] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:26,177 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:26,235 p=90007 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Getting nginx version] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:27,629 p=90007 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 21:15:27,702 p=90007 u=oleksii n=ansible |  ______________________________________________________ 
+< TASK [nginx : Downloading & Unpacking NGINX sources] >
+ ------------------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:30,728 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:30,792 p=90007 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Preparing module brotli] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:33,222 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:33,287 p=90007 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Building module] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:34,588 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:34,658 p=90007 u=oleksii n=ansible |  _________________________________ 
+< TASK [nginx : Compiling module] >
+ --------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:35,857 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:35,921 p=90007 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Find module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:37,322 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:37,380 p=90007 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copy module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:38,805 p=90007 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_filter_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 5735200, 'inode': 390566, 'dev': 64772, 'nlink': 1, 'atime': 1641148025.5784214, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 21:15:40,002 p=90007 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_static_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 80144, 'inode': 390567, 'dev': 64772, 'nlink': 1, 'atime': 1641148026.797424, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 21:15:40,063 p=90007 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copyng nginx.conf] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:15:42,177 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:15:42,238 p=90007 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Copyng conf.d] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:00,879 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:16:00,940 p=90007 u=oleksii n=ansible |  _____________________________ 
+< TASK [nginx : Copyng certs] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:03,097 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:16:03,159 p=90007 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Creating log file] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:04,532 p=90007 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.error.log)
+2022-01-02 21:16:05,778 p=90007 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.access.log)
+2022-01-02 21:16:05,844 p=90007 u=oleksii n=ansible |  __________________________________________ 
+< TASK [nginx : Creating vhosts directory] >
+ ------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:07,139 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:16:07,198 p=90007 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:09,813 p=90007 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 21:16:09,876 p=90007 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Copying upstream config] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:12,533 p=90007 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 21:16:12,588 p=90007 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:19,963 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:16:20,035 p=90007 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:22,020 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:16:22,094 p=90007 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:24,558 p=90007 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 21:16:24,627 p=90007 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:25,936 p=90007 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:16:25,992 p=90007 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:29,325 p=90007 u=oleksii n=ansible | failed: [82.146.36.203] (item=dev) => {"ansible_loop_var": "item", "changed": true, "cmd": "certbot --nginx certonly -d dev", "delta": "0:00:01.999548", "end": "2022-01-02 22:16:29.134060", "item": "dev", "msg": "non-zero return code", "rc": 1, "start": "2022-01-02 22:16:27.134512", "stderr": "Saving debug log to /var/log/letsencrypt/letsencrypt.log\nAn unexpected error occurred:\nThe server will not issue certificates for the identifier :: Error creating new order :: Cannot issue for \"dev\": Domain name needs at least one dot\nAsk for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details.", "stderr_lines": ["Saving debug log to /var/log/letsencrypt/letsencrypt.log", "An unexpected error occurred:", "The server will not issue certificates for the identifier :: Error creating new order :: Cannot issue for \"dev\": Domain name needs at least one dot", "Ask for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details."], "stdout": "Requesting a certificate for dev", "stdout_lines": ["Requesting a certificate for dev"]}
+2022-01-02 21:16:29,357 p=90007 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:16:29,358 p=90007 u=oleksii n=ansible | 82.146.36.203              : ok=28   changed=4    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:18:33,477 p=90603 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:18:33,541 p=90603 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:18:36,712 p=90603 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:18:36,776 p=90603 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:18:43,919 p=90603 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:18:43,992 p=90603 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:18:46,188 p=90603 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:18:46,253 p=90603 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:18:48,684 p=90603 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:18:48,720 p=90603 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:18:51,635 p=90603 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:18:51,696 p=90603 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:21:36,535 p=90603 u=oleksii n=ansible |  [ERROR]: User interrupted execution
+
+2022-01-02 21:26:22,906 p=91236 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:22,973 p=91236 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:25,993 p=91236 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:26:26,047 p=91236 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:33,650 p=91236 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:26:33,713 p=91236 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:35,983 p=91236 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:26:36,033 p=91236 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:38,449 p=91236 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:26:38,501 p=91236 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:39,886 p=91236 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:26:39,953 p=91236 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:41,928 p=91236 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": true, "cmd": "certbot -n --agree-tos --nginx certonly -d test.aquatherm72.ru -m mail aquatermsk@mail.ru,alpi@keemail.me", "delta": "0:00:00.723030", "end": "2022-01-02 22:26:41.701232", "msg": "non-zero return code", "rc": 2, "start": "2022-01-02 22:26:40.978202", "stderr": "usage: \n  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...\n\nCertbot can obtain and install HTTPS/TLS/SSL certificates.  By default,\nit will attempt to use a webserver both for obtaining and installing the\ncertificate. \ncertbot: error: unrecognized arguments: aquatermsk@mail.ru,alpi@keemail.me", "stderr_lines": ["usage: ", "  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...", "", "Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,", "it will attempt to use a webserver both for obtaining and installing the", "certificate. ", "certbot: error: unrecognized arguments: aquatermsk@mail.ru,alpi@keemail.me"], "stdout": "", "stdout_lines": []}
+2022-01-02 21:26:41,981 p=91236 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:26:41,981 p=91236 u=oleksii n=ansible | 82.146.36.203              : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:27:14,979 p=91329 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:15,023 p=91329 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:17,780 p=91329 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:27:17,824 p=91329 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:25,355 p=91329 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:27:25,425 p=91329 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:27,510 p=91329 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:27:27,574 p=91329 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:29,862 p=91329 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:27:29,937 p=91329 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:31,275 p=91329 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:27:31,313 p=91329 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:33,275 p=91329 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": true, "cmd": "certbot -n --agree-tos --nginx certonly -d test.aquatherm72.ru -m mail alpi@keemail.me", "delta": "0:00:00.743837", "end": "2022-01-02 22:27:33.102646", "msg": "non-zero return code", "rc": 2, "start": "2022-01-02 22:27:32.358809", "stderr": "usage: \n  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...\n\nCertbot can obtain and install HTTPS/TLS/SSL certificates.  By default,\nit will attempt to use a webserver both for obtaining and installing the\ncertificate. \ncertbot: error: unrecognized arguments: alpi@keemail.me", "stderr_lines": ["usage: ", "  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...", "", "Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,", "it will attempt to use a webserver both for obtaining and installing the", "certificate. ", "certbot: error: unrecognized arguments: alpi@keemail.me"], "stdout": "", "stdout_lines": []}
+2022-01-02 21:27:33,336 p=91329 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:27:33,337 p=91329 u=oleksii n=ansible | 82.146.36.203              : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:30:10,480 p=91499 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:10,533 p=91499 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:13,876 p=91499 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:30:13,928 p=91499 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:21,344 p=91499 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:30:21,399 p=91499 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:23,612 p=91499 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:30:23,664 p=91499 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:26,120 p=91499 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:30:26,179 p=91499 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:27,593 p=91499 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:30:27,652 p=91499 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:31,417 p=91499 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": true, "cmd": "certbot -n --agree-tos --nginx certonly -d test.aquatherm72.ru,dev -m alpi@keemail.me --dry-run", "delta": "0:00:02.427579", "end": "2022-01-02 22:30:31.246587", "msg": "non-zero return code", "rc": 1, "start": "2022-01-02 22:30:28.819008", "stderr": "Saving debug log to /var/log/letsencrypt/letsencrypt.log\nAn unexpected error occurred:\nThe server will not issue certificates for the identifier :: Error creating new order :: Cannot issue for \"dev\": Domain name needs at least one dot\nAsk for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details.", "stderr_lines": ["Saving debug log to /var/log/letsencrypt/letsencrypt.log", "An unexpected error occurred:", "The server will not issue certificates for the identifier :: Error creating new order :: Cannot issue for \"dev\": Domain name needs at least one dot", "Ask for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details."], "stdout": "Account registered.\nSimulating a certificate request for test.aquatherm72.ru and dev", "stdout_lines": ["Account registered.", "Simulating a certificate request for test.aquatherm72.ru and dev"]}
+2022-01-02 21:30:31,444 p=91499 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:30:31,444 p=91499 u=oleksii n=ansible | 82.146.36.203              : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:32:05,398 p=91626 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:05,440 p=91626 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:08,149 p=91626 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:32:08,195 p=91626 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:15,301 p=91626 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:32:15,368 p=91626 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:17,483 p=91626 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:32:17,538 p=91626 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:17,938 p=91626 u=oleksii n=ansible |  [ERROR]: User interrupted execution
+
+2022-01-02 21:32:49,138 p=91683 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:49,200 p=91683 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:51,541 p=91683 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:32:51,616 p=91683 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:32:58,308 p=91683 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:32:58,362 p=91683 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:33:00,700 p=91683 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:33:00,758 p=91683 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:33:03,198 p=91683 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:33:03,261 p=91683 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:33:04,715 p=91683 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:33:04,783 p=91683 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:33:08,078 p=91683 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": true, "cmd": "certbot -n --agree-tos --nginx certonly -d test.aquatherm72.ru,dev -m alpi@keemail.me --dry-run", "delta": "0:00:02.060210", "end": "2022-01-02 22:33:07.920309", "msg": "non-zero return code", "rc": 1, "start": "2022-01-02 22:33:05.860099", "stderr": "Saving debug log to /var/log/letsencrypt/letsencrypt.log\nAn unexpected error occurred:\nThe server will not issue certificates for the identifier :: Error creating new order :: Cannot issue for \"dev\": Domain name needs at least one dot\nAsk for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details.", "stderr_lines": ["Saving debug log to /var/log/letsencrypt/letsencrypt.log", "An unexpected error occurred:", "The server will not issue certificates for the identifier :: Error creating new order :: Cannot issue for \"dev\": Domain name needs at least one dot", "Ask for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details."], "stdout": "Simulating a certificate request for test.aquatherm72.ru and dev", "stdout_lines": ["Simulating a certificate request for test.aquatherm72.ru and dev"]}
+2022-01-02 21:33:08,127 p=91683 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:33:08,127 p=91683 u=oleksii n=ansible | 82.146.36.203              : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:34:49,632 p=91793 u=oleksii n=ansible | localhost | SUCCESS => {
+    "msg": "Hello world!"
+}
+2022-01-02 21:35:08,109 p=91806 u=oleksii n=ansible | localhost | SUCCESS => {
+    "msg": "passed"
+}
+2022-01-02 21:35:23,572 p=91816 u=oleksii n=ansible | localhost | SUCCESS => {
+    "msg": [
+        1,
+        2
+    ]
+}
+2022-01-02 21:35:40,483 p=91830 u=oleksii n=ansible | localhost | SUCCESS => {
+    "msg": "[---1---,---2---]"
+}
+2022-01-02 21:36:13,728 p=91848 u=oleksii n=ansible | localhost | FAILED! => {
+    "msg": "The task includes an option with an undefined variable. The error was: 't' is undefined. 't' is undefined"
+}
+2022-01-02 21:36:34,959 p=91862 u=oleksii n=ansible | localhost | SUCCESS => {
+    "msg": "[---OOO1---OOO,---OOO2---OOO]"
+}
+2022-01-02 21:37:34,341 p=91920 u=oleksii n=ansible | localhost | FAILED! => {
+    "msg": "template error while templating string: unexpected 'end of print statement'. String: {{ test|join('---' + t) if not loop.last else  }}"
+}
+2022-01-02 21:37:46,903 p=91934 u=oleksii n=ansible | localhost | FAILED! => {
+    "msg": "The task includes an option with an undefined variable. The error was: 'loop' is undefined. 'loop' is undefined"
+}
+2022-01-02 21:38:18,664 p=91950 u=oleksii n=ansible | localhost | FAILED! => {
+    "msg": "The task includes an option with an undefined variable. The error was: 'str object' has no attribute 'last'. 'str object' has no attribute 'last'"
+}
+2022-01-02 21:38:47,185 p=91963 u=oleksii n=ansible | localhost | FAILED! => {
+    "msg": "The task includes an option with an undefined variable. The error was: 'str object' has no attribute 'last'. 'str object' has no attribute 'last'"
+}
+2022-01-02 21:39:03,357 p=91972 u=oleksii n=ansible | localhost | FAILED! => {
+    "msg": "The task includes an option with an undefined variable. The error was: 'str object' has no attribute 'last'. 'str object' has no attribute 'last'"
+}
+2022-01-02 21:40:07,286 p=92001 u=oleksii n=ansible | localhost | FAILED! => {
+    "msg": "The task includes an option with an undefined variable. The error was: 'str object' has no attribute 'last'. 'str object' has no attribute 'last'"
+}
+2022-01-02 21:40:12,250 p=92011 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:12,299 p=92011 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:15,230 p=92011 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:40:15,303 p=92011 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:22,615 p=92011 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:40:22,672 p=92011 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:24,888 p=92011 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:40:24,955 p=92011 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:27,380 p=92011 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:40:27,431 p=92011 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:28,862 p=92011 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:40:28,922 p=92011 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:31,034 p=92011 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": true, "cmd": "certbot -n --agree-tos --nginx certonly -d test.aquatherm72.ru-m alpi@keemail.me --dry-run", "delta": "0:00:00.815020", "end": "2022-01-02 22:40:30.860676", "msg": "non-zero return code", "rc": 2, "start": "2022-01-02 22:40:30.045656", "stderr": "usage: \n  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...\n\nCertbot can obtain and install HTTPS/TLS/SSL certificates.  By default,\nit will attempt to use a webserver both for obtaining and installing the\ncertificate. \ncertbot: error: unrecognized arguments: alpi@keemail.me", "stderr_lines": ["usage: ", "  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...", "", "Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,", "it will attempt to use a webserver both for obtaining and installing the", "certificate. ", "certbot: error: unrecognized arguments: alpi@keemail.me"], "stdout": "", "stdout_lines": []}
+2022-01-02 21:40:31,086 p=92011 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:40:31,086 p=92011 u=oleksii n=ansible | 82.146.36.203              : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:41:14,307 p=92105 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:41:14,370 p=92105 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:41:16,842 p=92105 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:41:16,917 p=92105 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:41:26,514 p=92105 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 21:41:26,573 p=92105 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:41:29,623 p=92105 u=oleksii n=ansible | changed: [82.146.36.203] => (item=dev)
+2022-01-02 21:41:29,720 p=92105 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:41:29,720 p=92105 u=oleksii n=ansible | 82.146.36.203              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:42:29,455 p=92168 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:42:29,527 p=92168 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:42:32,577 p=92168 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:42:32,637 p=92168 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:42:43,115 p=92168 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 21:42:43,184 p=92168 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:42:46,459 p=92168 u=oleksii n=ansible | changed: [82.146.36.203] => (item=dev)
+2022-01-02 21:42:46,559 p=92168 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:42:46,559 p=92168 u=oleksii n=ansible | 82.146.36.203              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-01-02 21:48:39,648 p=92317 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:48:39,702 p=92317 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:48:42,862 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:48:42,914 p=92317 u=oleksii n=ansible |  _______________________________ 
+< TASK [common : Update system] >
+ ------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:00,153 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:00,218 p=92317 u=oleksii n=ansible |  ______________________________________ 
+< TASK [common : Install epel release] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:08,212 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:08,250 p=92317 u=oleksii n=ansible |  ___________________________________ 
+< TASK [common : Install core soft] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:15,013 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:15,069 p=92317 u=oleksii n=ansible |  ___________________________________________________ 
+< TASK [common : Install Additional Dev libriaries] >
+ --------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:21,663 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:21,729 p=92317 u=oleksii n=ansible |  ______________________________________________ 
+< TASK [common : Make sure pymysql is present] >
+ ---------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:23,738 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:23,802 p=92317 u=oleksii n=ansible |  __________________________________________________ 
+< TASK [common : Install the MySQL-Python Library] >
+ -------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:25,744 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:25,819 p=92317 u=oleksii n=ansible |  _____________________________ 
+< TASK [common : Create user] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:27,297 p=92317 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'support', 'groups': 'wheel'})
+2022-01-02 21:49:28,521 p=92317 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'aquatherm', 'groups': ''})
+2022-01-02 21:49:28,591 p=92317 u=oleksii n=ansible |  ____________________________________________________ 
+< TASK [nginx : Add Nginx repo with latest versions] >
+ ---------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:30,863 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:30,930 p=92317 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Install nginx] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:37,612 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:37,674 p=92317 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Getting nginx version] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:39,007 p=92317 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 21:49:39,064 p=92317 u=oleksii n=ansible |  ______________________________________________________ 
+< TASK [nginx : Downloading & Unpacking NGINX sources] >
+ ------------------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:41,988 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:42,015 p=92317 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Preparing module brotli] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:44,708 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:44,767 p=92317 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Building module] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:46,014 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:46,079 p=92317 u=oleksii n=ansible |  _________________________________ 
+< TASK [nginx : Compiling module] >
+ --------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:47,262 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:47,330 p=92317 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Find module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:48,680 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:48,746 p=92317 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copy module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:50,117 p=92317 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_filter_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 5735200, 'inode': 390566, 'dev': 64772, 'nlink': 1, 'atime': 1641148025.5784214, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 21:49:51,176 p=92317 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_static_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 80144, 'inode': 390567, 'dev': 64772, 'nlink': 1, 'atime': 1641148026.797424, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 21:49:51,214 p=92317 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copyng nginx.conf] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:49:53,281 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:49:53,346 p=92317 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Copyng conf.d] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:11,592 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:50:11,644 p=92317 u=oleksii n=ansible |  _____________________________ 
+< TASK [nginx : Copyng certs] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:13,671 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:50:13,728 p=92317 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Creating log file] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:15,119 p=92317 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.error.log)
+2022-01-02 21:50:16,321 p=92317 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.access.log)
+2022-01-02 21:50:16,379 p=92317 u=oleksii n=ansible |  __________________________________________ 
+< TASK [nginx : Creating vhosts directory] >
+ ------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:17,636 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:50:17,702 p=92317 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:19,791 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:50:19,850 p=92317 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Copying upstream config] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:21,848 p=92317 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 21:50:21,903 p=92317 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:21,931 p=92317 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 21:50:21,977 p=92317 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:22,005 p=92317 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 21:50:22,059 p=92317 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:22,081 p=92317 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 21:50:22,135 p=92317 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:22,158 p=92317 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 21:50:22,215 p=92317 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:22,256 p=92317 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 21:50:22,305 p=92317 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:22,335 p=92317 u=oleksii n=ansible | skipping: [82.146.36.203] => (item=dev) 
+2022-01-02 21:50:22,393 p=92317 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Remove certbot config] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:22,420 p=92317 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 21:50:22,473 p=92317 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Creating subdomain directories] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:23,775 p=92317 u=oleksii n=ansible | ok: [82.146.36.203] => (item=dev)
+2022-01-02 21:50:23,851 p=92317 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:26,372 p=92317 u=oleksii n=ansible | changed: [82.146.36.203] => (item=dev)
+2022-01-02 21:50:26,440 p=92317 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:27,663 p=92317 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": false, "cmd": ["nginx", "-s", "reload"], "delta": "0:00:00.008844", "end": "2022-01-02 22:50:27.498877", "msg": "non-zero return code", "rc": 1, "start": "2022-01-02 22:50:27.490033", "stderr": "nginx: [emerg] duplicate listen options for 0.0.0.0:80 in /etc/nginx/vhosts/dev.conf:2", "stderr_lines": ["nginx: [emerg] duplicate listen options for 0.0.0.0:80 in /etc/nginx/vhosts/dev.conf:2"], "stdout": "", "stdout_lines": []}
+2022-01-02 21:50:27,715 p=92317 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 21:50:27,716 p=92317 u=oleksii n=ansible | 82.146.36.203              : ok=26   changed=2    unreachable=0    failed=1    skipped=7    rescued=0    ignored=0   
+2022-01-02 22:02:23,641 p=93049 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:02:23,691 p=93049 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:02:26,830 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:02:26,895 p=93049 u=oleksii n=ansible |  _______________________________ 
+< TASK [common : Update system] >
+ ------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:02:40,670 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:02:40,731 p=93049 u=oleksii n=ansible |  ______________________________________ 
+< TASK [common : Install epel release] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:02:48,598 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:02:48,663 p=93049 u=oleksii n=ansible |  ___________________________________ 
+< TASK [common : Install core soft] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:02:55,349 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:02:55,425 p=93049 u=oleksii n=ansible |  ___________________________________________________ 
+< TASK [common : Install Additional Dev libriaries] >
+ --------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:02,665 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:02,739 p=93049 u=oleksii n=ansible |  ______________________________________________ 
+< TASK [common : Make sure pymysql is present] >
+ ---------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:04,829 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:04,892 p=93049 u=oleksii n=ansible |  __________________________________________________ 
+< TASK [common : Install the MySQL-Python Library] >
+ -------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:06,790 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:06,839 p=93049 u=oleksii n=ansible |  _____________________________ 
+< TASK [common : Create user] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:08,411 p=93049 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'support', 'groups': 'wheel'})
+2022-01-02 22:03:09,632 p=93049 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'aquatherm', 'groups': ''})
+2022-01-02 22:03:09,708 p=93049 u=oleksii n=ansible |  ____________________________________________________ 
+< TASK [nginx : Add Nginx repo with latest versions] >
+ ---------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:11,983 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:12,044 p=93049 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Install nginx] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:18,751 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:18,826 p=93049 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Getting nginx version] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:20,206 p=93049 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 22:03:20,266 p=93049 u=oleksii n=ansible |  ______________________________________________________ 
+< TASK [nginx : Downloading & Unpacking NGINX sources] >
+ ------------------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:24,990 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:25,041 p=93049 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Preparing module brotli] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:27,427 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:27,481 p=93049 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Building module] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:28,737 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:28,802 p=93049 u=oleksii n=ansible |  _________________________________ 
+< TASK [nginx : Compiling module] >
+ --------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:30,030 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:30,093 p=93049 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Find module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:31,492 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:31,543 p=93049 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copy module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:32,920 p=93049 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_filter_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 5735200, 'inode': 390566, 'dev': 64772, 'nlink': 1, 'atime': 1641148025.5784214, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 22:03:34,063 p=93049 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_static_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 80144, 'inode': 390567, 'dev': 64772, 'nlink': 1, 'atime': 1641148026.797424, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 22:03:34,133 p=93049 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copyng nginx.conf] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:03:36,212 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:03:36,272 p=93049 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Copyng conf.d] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:00,597 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:04:00,669 p=93049 u=oleksii n=ansible |  _____________________________ 
+< TASK [nginx : Copyng certs] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:02,981 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:04:03,057 p=93049 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Creating log file] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:07,273 p=93049 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.error.log)
+2022-01-02 22:04:11,232 p=93049 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.access.log)
+2022-01-02 22:04:11,274 p=93049 u=oleksii n=ansible |  __________________________________________ 
+< TASK [nginx : Creating vhosts directory] >
+ ------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:13,238 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:04:13,299 p=93049 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:15,451 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:04:15,565 p=93049 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Copying upstream config] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:18,646 p=93049 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:04:18,722 p=93049 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:18,766 p=93049 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:04:18,840 p=93049 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:18,869 p=93049 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:04:18,939 p=93049 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:18,973 p=93049 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:04:19,031 p=93049 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:19,070 p=93049 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:04:19,130 p=93049 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:19,166 p=93049 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:04:19,224 p=93049 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:19,258 p=93049 u=oleksii n=ansible | skipping: [82.146.36.203] => (item={'name': 'dev', 'template': 'subd_presta.conf.j2'}) 
+2022-01-02 22:04:19,319 p=93049 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Remove certbot config] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:19,345 p=93049 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:04:19,410 p=93049 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Creating subdomain directories] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:23,727 p=93049 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'dev', 'template': 'subd_presta.conf.j2'})
+2022-01-02 22:04:23,804 p=93049 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:28,320 p=93049 u=oleksii n=ansible | changed: [82.146.36.203] => (item={'name': 'dev', 'template': 'subd_presta.conf.j2'})
+2022-01-02 22:04:28,385 p=93049 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:32,380 p=93049 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": false, "cmd": ["nginx", "-s", "reload"], "delta": "0:00:00.008516", "end": "2022-01-02 23:04:31.932427", "msg": "non-zero return code", "rc": 1, "start": "2022-01-02 23:04:31.923911", "stderr": "nginx: [emerg] directive \"server_name\" is not terminated by \";\" in /etc/nginx/vhosts/dev.conf:3", "stderr_lines": ["nginx: [emerg] directive \"server_name\" is not terminated by \";\" in /etc/nginx/vhosts/dev.conf:3"], "stdout": "", "stdout_lines": []}
+2022-01-02 22:04:32,429 p=93049 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:04:32,429 p=93049 u=oleksii n=ansible | 82.146.36.203              : ok=26   changed=2    unreachable=0    failed=1    skipped=7    rescued=0    ignored=0   
+2022-01-02 22:08:16,536 p=93691 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:16,603 p=93691 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:19,657 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:08:19,711 p=93691 u=oleksii n=ansible |  _______________________________ 
+< TASK [common : Update system] >
+ ------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:33,343 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:08:33,398 p=93691 u=oleksii n=ansible |  ______________________________________ 
+< TASK [common : Install epel release] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:41,326 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:08:41,401 p=93691 u=oleksii n=ansible |  ___________________________________ 
+< TASK [common : Install core soft] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:48,388 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:08:48,462 p=93691 u=oleksii n=ansible |  ___________________________________________________ 
+< TASK [common : Install Additional Dev libriaries] >
+ --------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:55,174 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:08:55,238 p=93691 u=oleksii n=ansible |  ______________________________________________ 
+< TASK [common : Make sure pymysql is present] >
+ ---------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:57,382 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:08:57,442 p=93691 u=oleksii n=ansible |  __________________________________________________ 
+< TASK [common : Install the MySQL-Python Library] >
+ -------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:08:59,396 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:08:59,456 p=93691 u=oleksii n=ansible |  _____________________________ 
+< TASK [common : Create user] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:00,994 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'support', 'groups': 'wheel'})
+2022-01-02 22:09:02,474 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'aquatherm', 'groups': ''})
+2022-01-02 22:09:02,549 p=93691 u=oleksii n=ansible |  ____________________________________________________ 
+< TASK [nginx : Add Nginx repo with latest versions] >
+ ---------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:05,042 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:05,118 p=93691 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Install nginx] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:12,146 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:12,178 p=93691 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Getting nginx version] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:13,618 p=93691 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 22:09:13,686 p=93691 u=oleksii n=ansible |  ______________________________________________________ 
+< TASK [nginx : Downloading & Unpacking NGINX sources] >
+ ------------------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:16,731 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:16,798 p=93691 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Preparing module brotli] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:19,221 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:19,291 p=93691 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Building module] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:20,575 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:20,646 p=93691 u=oleksii n=ansible |  _________________________________ 
+< TASK [nginx : Compiling module] >
+ --------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:21,898 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:21,954 p=93691 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Find module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:23,343 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:23,398 p=93691 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copy module files] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:24,850 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_filter_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 5735200, 'inode': 390566, 'dev': 64772, 'nlink': 1, 'atime': 1641148025.5784214, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 22:09:26,131 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'path': '/opt/nginx-1.21.5/objs/ngx_http_brotli_static_module.so', 'mode': '0755', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 80144, 'inode': 390567, 'dev': 64772, 'nlink': 1, 'atime': 1641148026.797424, 'mtime': 1640815442.533045, 'ctime': 1640815442.533045, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': True, 'wgrp': False, 'rgrp': True, 'xgrp': True, 'woth': False, 'roth': True, 'xoth': True, 'isuid': False, 'isgid': False})
+2022-01-02 22:09:26,189 p=93691 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Copyng nginx.conf] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:28,445 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:28,510 p=93691 u=oleksii n=ansible |  ______________________________ 
+< TASK [nginx : Copyng conf.d] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:47,044 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:47,115 p=93691 u=oleksii n=ansible |  _____________________________ 
+< TASK [nginx : Copyng certs] >
+ ----------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:49,202 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:49,255 p=93691 u=oleksii n=ansible |  __________________________________ 
+< TASK [nginx : Creating log file] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:50,743 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.error.log)
+2022-01-02 22:09:51,950 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=/var/log/nginx/aquatherm72.ru.access.log)
+2022-01-02 22:09:52,017 p=93691 u=oleksii n=ansible |  __________________________________________ 
+< TASK [nginx : Creating vhosts directory] >
+ ------------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:53,317 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:53,378 p=93691 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:55,500 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:55,551 p=93691 u=oleksii n=ansible |  ________________________________________ 
+< TASK [nginx : Copying upstream config] >
+ ---------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:57,686 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:09:57,747 p=93691 u=oleksii n=ansible |  ________________________________ 
+< TASK [nginx : Install certbot] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:57,780 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:09:57,832 p=93691 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Install certbot_nginx from pip] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:57,859 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:09:57,915 p=93691 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Copy tmp config to issue certs] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:57,940 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:09:57,992 p=93691 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:58,021 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:09:58,078 p=93691 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [nginx : Issue certs for test domain] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:58,114 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:09:58,173 p=93691 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [nginx : Issue certs for subdomains] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:58,209 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203] => (item={'name': 'dev', 'template': 'subd_presta.conf.j2'}) 
+2022-01-02 22:09:58,269 p=93691 u=oleksii n=ansible |  ______________________________________ 
+< TASK [nginx : Remove certbot config] >
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:58,294 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:09:58,348 p=93691 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [nginx : Creating subdomain directories] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:09:59,691 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item={'name': 'dev', 'template': 'subd_presta.conf.j2'})
+2022-01-02 22:09:59,763 p=93691 u=oleksii n=ansible |  ___________________________________ 
+< TASK [nginx : Copyng site config] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:02,778 p=93691 u=oleksii n=ansible | changed: [82.146.36.203] => (item={'name': 'dev', 'template': 'subd_presta.conf.j2'})
+2022-01-02 22:10:02,852 p=93691 u=oleksii n=ansible |  ____________________________________ 
+< TASK [nginx : Verify Nginx config] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:04,365 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:04,436 p=93691 u=oleksii n=ansible |  _______________________________________ 
+< TASK [nginx : Enabling nginx service] >
+ --------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:06,456 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:06,517 p=93691 u=oleksii n=ansible |  _________________________________ 
+< TASK [mysql : Installing Mysql] >
+ --------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:14,859 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:14,927 p=93691 u=oleksii n=ansible |  _______________________________________ 
+< TASK [mysql : Starting mysql service] >
+ --------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:16,633 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:16,690 p=93691 u=oleksii n=ansible |  ______________________ 
+< TASK [mysql : debug] >
+ ---------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:16,728 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => {
+    "mysql_service_state": "VARIABLE IS NOT DEFINED!"
+}
+2022-01-02 22:10:16,776 p=93691 u=oleksii n=ansible |  ________________________________________________________ 
+/ TASK [mysql : Check if we already have a root password \
+\ config]                                                /
+ -------------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:18,236 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:18,298 p=93691 u=oleksii n=ansible |  _____________________________________________ 
+< TASK [mysql : Generate mysql root password] >
+ --------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:18,335 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:18,385 p=93691 u=oleksii n=ansible |  _________________________________________________________ 
+< TASK [mysql : Save new root password in temporary file] >
+ --------------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:18,418 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:18,473 p=93691 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [mysql : Change MySQL root password] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:18,519 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:18,572 p=93691 u=oleksii n=ansible |  ___________________________________________________________ 
+/ TASK [mysql : Rename config with root password to correct \
+\ name - Step 1 - link]                                     /
+ ----------------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:18,602 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:18,651 p=93691 u=oleksii n=ansible |  ___________________________________________________________ 
+/ TASK [mysql : Rename config with root password to correct \
+\ name - Step 2 - unlink]                                   /
+ ----------------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:18,686 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:18,736 p=93691 u=oleksii n=ansible |  _______________________________________________ 
+< TASK [mysql : Clean up additional root users] >
+ ----------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:20,333 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=::1)
+2022-01-02 22:10:21,850 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=127.0.0.1)
+2022-01-02 22:10:23,418 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=m2.halflife4.beget.com)
+2022-01-02 22:10:27,330 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=82.146.36.203)
+2022-01-02 22:10:31,260 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=aquatherm)
+2022-01-02 22:10:31,319 p=93691 u=oleksii n=ansible |  _________________________________________________ 
+< TASK [mysql : Checking phpMyAdmin Installation] >
+ ------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:33,657 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:33,724 p=93691 u=oleksii n=ansible |  _____________________________________________ 
+< TASK [mysql : Create pma_tmp file variable] >
+ --------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:33,756 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:33,805 p=93691 u=oleksii n=ansible |  ___________________________________ 
+< TASK [mysql : Get phpmyadmin URL] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:33,829 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:33,884 p=93691 u=oleksii n=ansible |  ____________________________ 
+< TASK [mysql : Get version] >
+ ---------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:33,909 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:33,956 p=93691 u=oleksii n=ansible |  ________________________ 
+< TASK [mysql : Get URL] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:33,980 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:34,035 p=93691 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [mysql : Download latest phpmyadmin] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:34,060 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:34,111 p=93691 u=oleksii n=ansible |  ______________________________ 
+< TASK [mysql : Extract files] >
+ ------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:34,149 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:34,198 p=93691 u=oleksii n=ansible |  ______________________________________________ 
+< TASK [mysql : Create additional directories] >
+ ---------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:34,238 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203] => (item=upload) 
+2022-01-02 22:10:34,245 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203] => (item=save) 
+2022-01-02 22:10:34,253 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203] => (item=temp) 
+2022-01-02 22:10:34,256 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203] => (item=../../../etc/phpMyAdmin) 
+2022-01-02 22:10:34,313 p=93691 u=oleksii n=ansible |  ___________________________________________ 
+< TASK [mysql : Setuping phpMyAdmin config] >
+ ------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:34,348 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:34,400 p=93691 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [mysql : Installing nginx pma config] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:34,433 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:34,498 p=93691 u=oleksii n=ansible |  ___________________________________ 
+< TASK [php : Installing Remo repo] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:35,743 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:35,806 p=93691 u=oleksii n=ansible |  ________________________________ 
+< TASK [php : Check PHP version] >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:35,861 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:35,910 p=93691 u=oleksii n=ansible |  __________________________________ 
+< TASK [php : Remove existing PHP] >
+ ---------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:35,968 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:36,019 p=93691 u=oleksii n=ansible |  _______________________________________ 
+< TASK [php : Clean PHP repo selection] >
+ --------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:36,076 p=93691 u=oleksii n=ansible | skipping: [82.146.36.203]
+2022-01-02 22:10:36,124 p=93691 u=oleksii n=ansible |  ____________________________________ 
+< TASK [php : Installing System PHP] >
+ ------------------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:43,294 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:10:43,332 p=93691 u=oleksii n=ansible |  _______________________________________ 
+< TASK [php : Installing Secondary PHP] >
+ --------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:10:59,972 p=93691 u=oleksii n=ansible | changed: [82.146.36.203] => (item={'name': 'php73', 'install': True})
+2022-01-02 22:11:00,002 p=93691 u=oleksii n=ansible |  ____________________________________________ 
+< TASK [php : Creating PHP pool directories] >
+ -------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:04,795 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=wsdlcache-aquatherm72.ru)
+2022-01-02 22:11:06,366 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=session-aquatherm72.ru)
+2022-01-02 22:11:07,717 p=93691 u=oleksii n=ansible | ok: [82.146.36.203] => (item=opcache-aquatherm72.ru)
+2022-01-02 22:11:07,798 p=93691 u=oleksii n=ansible |  _____________________________________ 
+< TASK [php : Copyng PHP pool config] >
+ ------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:09,919 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:11:09,991 p=93691 u=oleksii n=ansible |  _________________________________________________ 
+< TASK [php : Creating PhpMyAdmin pool directory] >
+ ------------------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:11,243 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:11:11,306 p=93691 u=oleksii n=ansible |  _____________________________________ 
+< TASK [php : Copyng PhpMyAdmin pool] >
+ ------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:13,479 p=93691 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:11:13,549 p=93691 u=oleksii n=ansible |  ___________________________________ 
+< TASK [backup : Create backup dir] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:14,810 p=93691 u=oleksii n=ansible | [WARNING]: Module remote_tmp /home/aquatherm/.ansible/tmp did not exist and was created with a mode of 0700, this may cause
+issues when running as another user. To avoid this, create the remote_tmp dir with the correct permissions manually
+
+2022-01-02 22:11:14,811 p=93691 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 22:11:14,877 p=93691 u=oleksii n=ansible |  ___________________________________ 
+< TASK [backup : Copy drive client] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:19,431 p=93691 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 22:11:19,488 p=93691 u=oleksii n=ansible |  _______________________________________ 
+< TASK [backup : Install backup script] >
+ --------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:19,912 p=93691 u=oleksii n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2022-01-02 22:11:19,913 p=93691 u=oleksii n=ansible | fatal: [82.146.36.203]: FAILED! => {"changed": false, "msg": "Could not find or access 'backup.sh.j2'\nSearched in:\n\t/home/oleksii/Documents/ansible/install/roles/backup/templates/backup.sh.j2\n\t/home/oleksii/Documents/ansible/install/roles/backup/backup.sh.j2\n\t/home/oleksii/Documents/ansible/install/roles/backup/tasks/templates/backup.sh.j2\n\t/home/oleksii/Documents/ansible/install/roles/backup/tasks/backup.sh.j2\n\t/home/oleksii/Documents/ansible/install/templates/backup.sh.j2\n\t/home/oleksii/Documents/ansible/install/backup.sh.j2 on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2022-01-02 22:11:19,964 p=93691 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:11:19,964 p=93691 u=oleksii n=ansible | 82.146.36.203              : ok=43   changed=5    unreachable=0    failed=1    skipped=24   rescued=0    ignored=0   
+2022-01-02 22:16:03,294 p=94625 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:03,349 p=94625 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:06,256 p=94625 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:16:06,310 p=94625 u=oleksii n=ansible |  _______________________________ 
+< TASK [common : Update system] >
+ ------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:16,222 p=94625 u=oleksii n=ansible |  [ERROR]: User interrupted execution
+
+2022-01-02 22:16:44,885 p=94677 u=oleksii n=ansible |  ____________ 
+< PLAY [web] >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:44,944 p=94677 u=oleksii n=ansible |  ________________________ 
+< TASK [Gathering Facts] >
+ ------------------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:47,387 p=94677 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:16:47,494 p=94677 u=oleksii n=ansible |  ___________________________________ 
+< TASK [backup : Create backup dir] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:48,850 p=94677 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:16:48,915 p=94677 u=oleksii n=ansible |  ___________________________________ 
+< TASK [backup : Copy drive client] >
+ ----------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:51,968 p=94677 u=oleksii n=ansible | ok: [82.146.36.203]
+2022-01-02 22:16:52,031 p=94677 u=oleksii n=ansible |  _______________________________________ 
+< TASK [backup : Install backup script] >
+ --------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:54,667 p=94677 u=oleksii n=ansible | changed: [82.146.36.203]
+2022-01-02 22:16:54,747 p=94677 u=oleksii n=ansible |  ____________ 
+< PLAY RECAP >
+ ------------ 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+2022-01-02 22:16:54,747 p=94677 u=oleksii n=ansible | 82.146.36.203              : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

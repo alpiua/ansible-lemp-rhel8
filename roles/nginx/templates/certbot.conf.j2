@@ -1,0 +1,11 @@
+server {
+    listen 80;
+    server_name {{ tmp_site_name }};
+}
+
+{% for subd in subdomain %}
+server {
+    listen 80;
+    server_name {{ subd.name }}.{{ site_name }};
+}
+{% endfor %}

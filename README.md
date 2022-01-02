@@ -12,6 +12,8 @@ PHP - multiple versions simultaneously
     sendmail enable
     nginx server config
       remove def config
+    CERTBOT pip3 install certbot-nginx
+    autoissue cert for pma, subdomain
     logrotate
     mysql config
       dnf --enablerepo=epel-testing install python3-mysqlclient

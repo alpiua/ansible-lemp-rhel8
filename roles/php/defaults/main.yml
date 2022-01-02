@@ -40,20 +40,16 @@ secondary_php_packages:
   - "{{ item.name }}-php-soap"
   - "{{ item.name }}-php-xml"
 
+
+# system php only 7.2,7.3,7.4,8.0,8.1
+system_php: "7.4"
+
 secondary_php:
   - name: php56
-    install: false
   - name: php70
-    install: false
   - name: php71
-    install: false
   - name: php72
-    install: false
   - name: php73
-    install: false
   - name: php74
-    install: false
   - name: php80
-    install: false
   - name: php81
-    install: false

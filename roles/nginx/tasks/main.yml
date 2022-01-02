@@ -13,11 +13,16 @@
     state: latest
 
 - import_tasks: modules.yml
+
 - import_tasks: configs.yml
+  when: update_configs | default('false')
+
+- import_tasks: certbot.yml
+  when: subdomain and issue_certs
+
 - import_tasks: subdomain.yml
 
-- name: Trying to start nginx service
+- name: Enabling nginx service
   service:
     name: nginx
     enabled: true
-    state: started

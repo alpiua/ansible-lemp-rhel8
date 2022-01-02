@@ -5,15 +5,6 @@
     creates: /etc/yum.repos.d/remi-safe.repo
 
 
-- name: Checking Remo repo
-  shell:
-    cmd: dnf -C repolist enabled -v  | grep '^Repo-id' | awk '$3 == "remi-safe" {print "enabled"}'
-    warn: false 
-  check_mode: no
-  changed_when: false
-  register: remi_repo
-
-
 - import_tasks: clean_php.yml
   when: reinstall_php | default('false')
 
@@ -23,7 +14,6 @@
     name: "{{ php_packages }}"
     enablerepo: "php:remi-{{ system_php }}"
     state: latest
-  when: remi_repo.stdout == 'enabled'
 
 
 - name: Installing Secondary PHP

@@ -16,4 +16,11 @@
 - import_tasks: mysql_root.yml
   when: mysql_service.state == 'started'
 
+
+- name: Checking phpMyAdmin Installation
+  stat: 
+    path: /etc/phpMyAdmin/config.inc.php
+  register: pma_config
+
 - import_tasks: phpmyadmin.yml
+  when: pma_config.stat.exists == false

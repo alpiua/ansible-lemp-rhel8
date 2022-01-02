@@ -1,0 +1,33 @@
+- name: Install certbot
+  dnf: 
+    name: certbot
+    state: present
+
+- name: Install certbot_nginx from pip
+  pip:
+    name: certbot-nginx
+    state: present
+
+- name: Copy tmp config to issue certs
+  template: 
+    src: certbot.conf.j2
+    dest: /etc/nginx/vhosts/cerbot.conf
+
+- name: Verify Nginx config
+  command: nginx -s reload
+  changed_when: false
+
+- name: Issue certs for test domain
+  shell:
+    cmd: "certbot -n --agree-tos --nginx certonly -d {{ tmp_site_name }} -m {{ email }}"
+
+- name: Issue certs for subdomains
+  shell:
+    cmd: "certbot -n --agree-tos --nginx certonly -d {{ item.name }}.{{ site_name }} -m {{ email }}"
+  loop: "{{ subdomain }}"
+  when: subdomain
+
+- name: Remove certbot config
+  file:
+    path: /etc/nginx/vhosts/cerbot.conf
+    state: absent

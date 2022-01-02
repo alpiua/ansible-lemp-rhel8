@@ -1,6 +1,6 @@
 - name: Creating subdomain directories
   file: 
-    path: "/home/{{ site_user_name }}/www/{{ item }}"
+    path: "/home/{{ site_user_name }}/www/{{ item.name }}"
     state: directory
     owner: "{{ site_user_name }}"
     group: "{{ site_user_name }}"
@@ -9,9 +9,14 @@
 
 - name: Copyng site config
   template:
-    src: basic-php.j2
-    dest: "/etc/nginx/vhosts/{{ item }}.conf"
+    src: "{{ item.template }}"
+    dest: "/etc/nginx/vhosts/{{ item.name }}.conf"
     mode: 0644
     owner: root
     group: root
   loop: "{{ subdomain }}"
+
+- name: Verify Nginx config
+  command: nginx -s reload
+  changed_when: false
+

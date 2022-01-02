@@ -1,0 +1,16 @@
+# PHP-FPM FastCGI server
+# network or unix domain socket configuration
+
+upstream {{ site_name }} {
+        server unix:/var/run/php-fpm/{{ site_name }}.sock;
+}
+
+upstream pma {
+        server unix:/var/run/php-fpm/pma.sock;
+}
+
+{% for subd in subdomain %}
+upstream {{ subd.name }}.{{ site_name }} {
+        server unix:/var/run/php-fpm/{{ subd.name }}.{{ site_name }}.sock;
+}
+{% endfor %}

@@ -1,13 +1,7 @@
-- name: Checking phpMyAdmin Installation
-  stat: 
-    path: /etc/phpMyAdmin/config.inc.php
-  register: pma_config
-
 - name: Create pma_tmp file variable
   set_fact:
     pma_tmp: /tmp/pma_link.txt
     blowfish_secret: "{{ lookup('password','/dev/null chars=ascii_letters,digits length=32') }}"
-  when: pma_config.stat.exists == false
 
 - name: Get phpmyadmin URL
   shell: 
@@ -15,7 +9,6 @@
     warn: false
   args:
     creates: "{{ pma_tmp }}"
-  when: pma_config.stat.exists == false
 
 - name: Get version
   shell: "cat {{ pma_tmp }} | cut -d '\n' -f 1"
@@ -27,7 +20,6 @@
   shell: "cat {{ pma_tmp }} | cut -d '\n' -f 3"
   register: pma_url
   changed_when: false
-  when: pma_config.stat.exists == false
 
 - name: Download latest phpmyadmin 
   unarchive:
@@ -35,17 +27,15 @@
     dest: /opt
     remote_src: yes
   register: pma_source
-  when: pma_config.stat.exists == false
 
 - name: Extract files
   copy:
     src: "{{ pma_source.dest }}/phpMyAdmin-{{ pma_version.stdout }}-all-languages/"
     dest: /usr/share/phpMyAdmin
     remote_src: yes
-    mode: 0644
+    mode: 0755
     owner: root
     group: root
-  when: pma_config.stat.exists == false
   
 - name: Create additional directories
   file:
@@ -57,7 +47,6 @@
     - save
     - temp
     - '../../../etc/phpMyAdmin'
-  when: pma_config.stat.exists == false
 
 - name: Setuping phpMyAdmin config
   template:
@@ -66,4 +55,11 @@
     mode: 0640
     owner: root
     group: root
-  when: pma_config.stat.exists == false
+
+- name: Installing nginx pma config
+  template:
+    src: phpmyadmin.conf.j2
+    dest: /etc/nginx/vhosts/phpmyadmin.conf
+    mode: 644
+    owner: root
+    group: root 

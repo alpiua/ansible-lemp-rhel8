@@ -1,5 +1,7 @@
 rhel8_list:
     - dnf-utils
+    - sendmail  
+    - mailx  
     - git
     - tar
     - zip

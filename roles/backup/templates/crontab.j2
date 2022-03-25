@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=""
+
+0 5  * * * root sudo -u {{ site_user_name }} /home/{{ site_user_name }}/backup/backup.sh > /home/{{ site_user_name }}/backup/backup_{{ site_user_name }}.log 2>&1

@@ -1,16 +1,16 @@
 server {
-    listen 80;
-    server_name {{ item.name }}.{{ site_name }};
+    listen 80 fefault_server;
+    server_name {{ item.name + '.' + site_name }};
     return 301 https://$server_name$request_uri;
 }
 
 server {
-    listen 443 ssl http2;
-    server_name {{ item.name }}.{{ site_name }};
+    listen 443 ssl http2 default_server;
+    server_name {{ item.name + '.' + site_name }};
 
    #SSL
-    ssl_certificate /etc/letsencrypt/live/{{ item.name }}.{{ site_name }}/fullchain.pem; 
-    ssl_certificate_key /etc/letsencrypt/live/{{ item.name }}.{{ site_name }}/privkey.pem; 
+    ssl_certificate /etc/letsencrypt/live/{{ item.name + '.' + site_name }}/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/{{ item.name + '.' + site_name }}/privkey.pem; 
     #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     include /etc/nginx/conf.d/ssl.inc;
@@ -52,6 +52,6 @@ server {
         fastcgi_cache_valid any 1m;
     }
 
-    access_log /var/log/nginx/{{ item.name }}.access.log;
+    access_log off;
     error_log  /var/log/nginx/{{ item.name }}.error.log;
 }

@@ -1,0 +1,13 @@
+- name: "Create database {{ db.name }}"
+  mysql_db:
+    name: "{{ db.name }}"
+    state: present
+      #    state: import
+      #    target: "/home/{{ site_username }}/backup/{{ site_name }}/{{ site_name }}.sql
+
+      #- name: "Create user {{ db.user }}"
+      #  mysql_user:
+      #    name: "{{ db.user }}"
+      #    state: present
+      #    password: "{{ db.pass }}"
+      #    priv: '{{ db.name }}.*:ALL'

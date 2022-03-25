@@ -2,7 +2,7 @@
   copy: 
     src: files/nginx.conf
     dest: "{{ nginx_conf_path }}"
-    mode: 644
+    mode: 0644
     owner: root
     group: root
     backup: true
@@ -11,7 +11,7 @@
   copy: 
     src: files/conf.d/
     dest: /etc/nginx/conf.d 
-    mode: 644
+    mode: 0644
     owner: root
     group: root
 
@@ -19,7 +19,7 @@
   copy:
     src: files/certs/
     dest: /etc/nginx/certs
-    mode: 640
+    mode: 0640
     owner: root
     group: nginx
 
@@ -36,16 +36,11 @@
     - "/var/log/nginx/{{ site_name }}.error.log"
     - "/var/log/nginx/{{ site_name }}.access.log"
 
-- name: Creating vhosts directory
-  file: 
-    path: /etc/nginx/vhosts
-    state: directory
-
 - name: Copyng site config
   template:
     src: "{{ site_template }}"
     dest: /etc/nginx/vhosts/{{ site_name }}.conf
-    mode: 644
+    mode: 0644
     owner: root
     group: root
 

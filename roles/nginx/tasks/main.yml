@@ -2,7 +2,7 @@
   copy: 
     src=files/rhel8.repo 
     dest=/etc/yum.repos.d/nginx.repo 
-    mode=644
+    mode=0644
     owner=root
     group=root
 
@@ -11,18 +11,25 @@
     name: nginx
     enablerepo: nginx-mainline
     state: latest
+  register: nginx_update
 
 - import_tasks: modules.yml
+  tags: build
+  when: nginx_update.changed
 
-- import_tasks: configs.yml
-  when: update_configs | default('false')
-
-- import_tasks: certbot.yml
+- include_tasks: certbot.yml
   when: subdomain and issue_certs
 
-- import_tasks: subdomain.yml
+- include_tasks: configs.yml
+
+- include_tasks: subdomain.yml
+
+- name: Verify Nginx config
+  command: nginx -t
+  changed_when: false
 
 - name: Enabling nginx service
   service:
     name: nginx
+    state: started
     enabled: true

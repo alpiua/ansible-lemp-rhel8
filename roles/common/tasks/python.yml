@@ -2,8 +2,3 @@
   pip:
     name: pymysql
     state: present
-
-- name: Install the MySQL-Python Library
-  pip: 
-    name: mysqlclient
-    state: present

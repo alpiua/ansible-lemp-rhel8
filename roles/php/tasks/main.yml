@@ -15,13 +15,10 @@
     enablerepo: "php:remi-{{ system_php }}"
     state: latest
 
+- import_tasks: php-fpm.yml
 
-- name: Installing Secondary PHP
-  dnf:
-    name: "{{ secondary_php_packages }}"
-    state: latest
-  when: item.install
+- include_tasks: secondary_php-fpm.yml
   loop: "{{ secondary_php }}"  
-
-
-- import_tasks: configs.yml
+  loop_control:
+    loop_var: php
+  when: install_secondary_php

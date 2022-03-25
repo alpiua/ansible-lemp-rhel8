@@ -1,8 +1,8 @@
-[{{ site_name }}]
+[{{ item.name + '.' + site_name }}]
 user = {{ site_user_name }}
 group = {{ site_user_name }}
 
-listen = /var/run/php-fpm/{{ site_name }}.sock
+listen = /var/run/php-fpm/$pool.sock
 
 listen.owner = nginx
 listen.group = nginx
@@ -10,9 +10,9 @@ listen.mode = 0660
 
 pm = static
 ;pm.start_servers = 10 
-pm.max_children = 30 
-pm.min_spare_servers = 10
-pm.max_spare_servers = 20 
+pm.max_children = 5
+pm.min_spare_servers = 2
+pm.max_spare_servers = 5 
 pm.max_requests = 10000
 
 pm.process_idle_timeout = 30s

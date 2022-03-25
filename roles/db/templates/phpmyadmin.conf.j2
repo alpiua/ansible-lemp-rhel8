@@ -3,11 +3,11 @@ server {
     server_name pma.{{ site_name }};
 
     auth_basic "You shall not pass!";
-    auth_basic_user_file /etc/nginx/conf.d/pma_pass;
+    auth_basic_user_file /etc/nginx/conf.d/auth_pma;
 
    #SSL
-    ssl_certificate /etc/letsencrypt/live/pma.{{ site_name }}fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/pma.{{ site_name }}privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/pma.{{ site_name }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/pma.{{ site_name }}/privkey.pem;
 
     include /etc/nginx/conf.d/ssl.inc;
 
@@ -36,6 +36,6 @@ server {
       fastcgi_param SCRIPT_FILENAME /usr/share/phpMyAdmin$fastcgi_script_name;
    }
    
-   access_log /var/log/nginx/phpmyadmin_access.log
-   error_log /var/log/nginx/phpmyadmin_error.log
+   access_log /var/log/nginx/phpmyadmin_access.log;
+   error_log /var/log/nginx/phpmyadmin_error.log;
 }

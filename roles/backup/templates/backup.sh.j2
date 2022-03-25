@@ -15,9 +15,19 @@ site={{ site_name }}
 workdir=/home/{{ site_user_name }}/backup
 sitedir=/home/{{ site_user_name }}/www/$site
 
-mysqldb={{ site_name }}
-mysqluser={{ site_name }}
-mysqlpass="pass here"
+{% if prestashop_version == 1.6 %}
+# prestashop 1.6 settings path
+mysqldb="$(grep DB_NAME $sitedir/config/settings.inc.php | awk -F\' '{ print $4 }')"
+mysqluser="$(grep DB_USER $sitedir/config/settings.inc.php | awk -F\' '{ print $4 }')"
+mysqlpass="$(grep DB_PASSWD $sitedir/config/settings.inc.php | awk -F\' '{ print $4 }')"
+{% endif %}
+
+{% if prestashop_version == 1.7 %}
+# prestashop 1.6 settings path
+mysqldb="$(grep database_name $sitedir/app/config/parameters.php | awk -F\' '{ print $4 }')"
+mysqluser="$(grep database_user $sitedir/app/config/parameters.php | awk -F\' '{ print $4 }')"
+mysqlpass="$(grep database_password $sitedir/app/config/parameters.php | awk -F\' '{ print $4 }')"
+{% endif %}
 
 backuplog=/home/${USER}/backup/backup_${site}.log
 email={{ email }}

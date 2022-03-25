@@ -15,8 +15,3 @@
     owner: root
     group: root
   loop: "{{ subdomain }}"
-
-- name: Verify Nginx config
-  command: nginx -s reload
-  changed_when: false
-

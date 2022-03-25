@@ -1,33 +1,29 @@
 server {
     listen 80;
-    server_name {{ item.name }}.{{ site_name }};
+    server_name {{ item.name + '.' + site_name }};
     return 301 https://$server_name$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name {{ item.name }}.{{ site_name }};
+    server_name {{ item.name + '.' + site_name }};
 
    #SSL
-    ssl_certificate /etc/letsencrypt/live/{{ item.name }}.{{ site_name }}/fullchain.pem; 
-    ssl_certificate_key /etc/letsencrypt/live/{{ item.name }}.{{ site_name }}/privkey.pem; 
+    ssl_certificate /etc/letsencrypt/live/{{ item.name + '.' + site_name }}/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/{{ item.name + '.' + site_name }}/privkey.pem; 
     #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     include /etc/nginx/conf.d/ssl.inc;
-    include /etc/nginx/conf.d/headers.inc;
-    include /etc/nginx/conf.d/phpmyadmin.inc;
-    include /etc/nginx/conf.d/redirect.inc;
     include /etc/nginx/conf.d/static.inc;
+
+    ### DISALLOW INDEXING FOR TEST AND DEV SERVER ###
+    add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
 
     root /home/{{ site_user_name }}/www/{{ item.name }};
     index  index.php;
     
-    # [REQUIRED EDIT IF MULTILANG]
-    # rewrite ^/uk$ /uk/ redirect;
-    # rewrite ^/uk/(.*) /$1;
-    # rewrite ^/ru/(.+)/$ /ru/$1 permanent;
-    # rewrite ^/uk/(.+)/$ /uk/$1 permanent;
-
     location / {
         try_files $uri $uri/ /index.php?$args;
         if (-f $request_filename) { expires 31d; break; }
@@ -45,7 +41,7 @@ server {
         try_files $fastcgi_script_name /index.php$uri&$args =404;
 
         fastcgi_split_path_info ^(.+\.php)(.*)$;
-        fastcgi_pass   {{ site_name }};
+        fastcgi_pass   {{ item.name + '.' + site_name }};
         fastcgi_index  index.php;
         fastcgi_param  HTTPS on;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
@@ -65,5 +61,5 @@ server {
     }
 
     access_log off;
-    error_log  /var/log/nginx/{{ site_name }}.error.log;
+    error_log  /var/log/nginx/{{ item.name }}.error.log;
 }

@@ -20,3 +20,9 @@
     dest:  "/home/{{ site_user_name }}/backup/backup.sh"
     owner: "{{ site_user_name }}"
     group: "{{ site_user_name }}"
+
+- name: Install crontab
+  template:
+    src: crontab.j2
+    dest: /etc/cron.d/backup
+    owner: root

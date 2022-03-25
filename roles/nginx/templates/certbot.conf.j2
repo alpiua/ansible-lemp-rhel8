@@ -6,6 +6,13 @@ server {
 {% for subd in subdomain %}
 server {
     listen 80;
-    server_name {{ subd.name }}.{{ site_name }};
+    server_name {{ subd.name + '.' + site_name }};
 }
 {% endfor %}
+
+{% if install_pma %}
+server {
+    listen 80;
+    server_name {{ 'pma.' + site_name }};
+}
+{% endif %}

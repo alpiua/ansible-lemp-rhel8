@@ -14,7 +14,6 @@
   shell: "cat {{ pma_tmp }} | cut -d '\n' -f 1"
   register: pma_version
   changed_when: false
-  when: pma_config.stat.exists == false
 
 - name: Get URL
   shell: "cat {{ pma_tmp }} | cut -d '\n' -f 3"
@@ -33,33 +32,50 @@
     src: "{{ pma_source.dest }}/phpMyAdmin-{{ pma_version.stdout }}-all-languages/"
     dest: /usr/share/phpMyAdmin
     remote_src: yes
-    mode: 0755
-    owner: root
-    group: root
+    mode: 0750
+    owner: nginx
+    group: nginx
   
 - name: Create additional directories
   file:
     path: "/var/lib/phpMyAdmin/{{ item }}"
     state: directory
     mode: 0770 
+    owner: nginx
+    group: nginx
   loop:
     - upload
     - save
     - temp
-    - '../../../etc/phpMyAdmin'
+      #    - '../../../etc/phpMyAdmin'
 
 - name: Setuping phpMyAdmin config
   template:
     src: config.inc.php.j2
-    dest: /etc/phpMyAdmin/config.inc.php
+    dest: /usr/share/phpMyAdmin/config.inc.php
+      #dest: /etc/phpMyAdmin/config.inc.php
     mode: 0640
-    owner: root
-    group: root
+    owner: nginx
+    group: nginx
 
 - name: Installing nginx pma config
   template:
     src: phpmyadmin.conf.j2
     dest: /etc/nginx/vhosts/phpmyadmin.conf
-    mode: 644
+    mode: 0644
     owner: root
     group: root 
+
+- name: Setup basic auth file
+  htpasswd:
+    create: yes
+    path: /etc/nginx/conf.d/auth_pma
+    name: support
+    password: "support_{{ site_name }}"
+    state: present
+  register: auth_pma
+
+- name: Reload nginx service to apply pma settings
+  command: nginx -s reload
+  changed_when: false
+  when: auth_pma.changed

@@ -16,7 +16,13 @@
     state: latest
 
 - import_tasks: devtools.yml
-- import_tasks: python.yml
+- import_tasks: python.yml # pip mysql, nginx software
+
+
+- name: Create sftp group
+  group:
+    name: sftp
+    state: present
 
 - name: Create user
   user:
@@ -24,5 +30,5 @@
     groups: "{{ item.groups }}"
   loop:
     - { name: "{{ admin_user }}", groups: "wheel" }
-    - { name: "{{ site_user_name }}", groups: "" }
+    - { name: "{{ site_user_name }}", groups: "sftp" }
   tags: user

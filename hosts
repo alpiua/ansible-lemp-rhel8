@@ -1,5 +1,5 @@
 [web]
-82.146.36.203:29920
+185.197.163.129:29920
 
 [web:vars]
 ansible_ssh_user=alpi

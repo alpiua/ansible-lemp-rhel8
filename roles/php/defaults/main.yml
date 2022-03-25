@@ -17,28 +17,30 @@ php_packages:
   - php-pecl-zip
   - php-process
   - php-soap
+  - php-mcrypt  
   - php-xml
 
 secondary_php_packages: 
-  - "{{ item.name }}-php"
-  - "{{ item.name }}-php-bcmath"
-  - "{{ item.name }}-php-cli"
-  - "{{ item.name }}-php-common"
-  - "{{ item.name }}-php-fpm"
-  - "{{ item.name }}-php-gd"
-  - "{{ item.name }}-php-intl"
-  - "{{ item.name }}-php-json"
-  - "{{ item.name }}-php-mbstring"
-  - "{{ item.name }}-php-mysqlnd"
-  - "{{ item.name }}-php-odbc"
-  - "{{ item.name }}-php-opcache"
-  - "{{ item.name }}-php-pdo"
-  - "{{ item.name }}-php-pear.noarch"
-  - "{{ item.name }}-php-pecl-apcu"
-  - "{{ item.name }}-php-pecl-zip"
-  - "{{ item.name }}-php-process"
-  - "{{ item.name }}-php-soap"
-  - "{{ item.name }}-php-xml"
+  - "{{ php.version }}-php"
+  - "{{ php.version }}-php-bcmath"
+  - "{{ php.version }}-php-cli"
+  - "{{ php.version }}-php-common"
+  - "{{ php.version }}-php-fpm"
+  - "{{ php.version }}-php-gd"
+  - "{{ php.version }}-php-intl"
+  - "{{ php.version }}-php-json"
+  - "{{ php.version }}-php-mbstring"
+  - "{{ php.version }}-php-mysqlnd"
+  - "{{ php.version }}-php-odbc"
+  - "{{ php.version }}-php-opcache"
+  - "{{ php.version }}-php-pdo"
+  - "{{ php.version }}-php-pear.noarch"
+  - "{{ php.version }}-php-pecl-apcu"
+  - "{{ php.version }}-php-pecl-zip"
+  - "{{ php.version }}-php-process"
+  - "{{ php.version }}-php-soap"
+  - "{{ php.version }}-php-mcrypt"
+  - "{{ php.version }}-php-xml"
 
 
 # system php only 7.2,7.3,7.4,8.0,8.1

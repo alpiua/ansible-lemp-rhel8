@@ -10,7 +10,7 @@ upstream pma {
 }
 
 {% for subd in subdomain %}
-upstream {{ subd.name }}.{{ site_name }} {
-        server unix:/var/run/php-fpm/{{ subd.name }}.{{ site_name }}.sock;
+upstream {{ subd.name + '.' + site_name }} {
+        server unix:/var/run/php-fpm/{{ subd.name + '.' + site_name }}.sock;
 }
 {% endfor %}

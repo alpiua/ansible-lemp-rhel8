@@ -1,7 +1,11 @@
+- include_tasks: roles/common/tasks/devtools.yml
+  vars: [devtools: 'present']
+
 - name: Getting nginx version
   shell: 
     cmd: rpm -q --qf "%{VERSION}\n" nginx
   register: nginx_version
+  changed_when: false
 
 - name: Downloading & Unpacking NGINX sources
   unarchive:
@@ -42,3 +46,6 @@
     mode: 0644
     remote_src: true
   loop: "{{ find_module.files }}"
+
+- include_tasks: roles/common/tasks/devtools.yml
+  vars: [devtools: 'absent']

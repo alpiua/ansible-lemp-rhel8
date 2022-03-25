@@ -1,25 +1,20 @@
-- name: Install certbot
-  dnf: 
-    name: certbot
-    state: present
-
-- name: Install certbot_nginx from pip
-  pip:
-    name: certbot-nginx
-    state: present
+- name: Creating vhosts directory
+  file: 
+    path: /etc/nginx/vhosts
+    state: directory
 
 - name: Copy tmp config to issue certs
   template: 
     src: certbot.conf.j2
-    dest: /etc/nginx/vhosts/cerbot.conf
-
-- name: Verify Nginx config
-  command: nginx -s reload
-  changed_when: false
+    dest: /etc/nginx/vhosts/certbot.conf
 
 - name: Issue certs for test domain
   shell:
     cmd: "certbot -n --agree-tos --nginx certonly -d {{ tmp_site_name }} -m {{ email }}"
+
+- name: Issue certs for phpmyadmin
+  shell:
+    cmd: "certbot -n --agree-tos --nginx certonly -d {{ 'pma.'+ site_name }} -m {{ email }}"
 
 - name: Issue certs for subdomains
   shell:
@@ -29,5 +24,11 @@
 
 - name: Remove certbot config
   file:
-    path: /etc/nginx/vhosts/cerbot.conf
+    path: /etc/nginx/vhosts/certbot.conf
     state: absent
+
+- name: Install crontab
+  template:
+    src: certbot_cron.j2
+    dest: /etc/cron.d/certbot
+    owner: root

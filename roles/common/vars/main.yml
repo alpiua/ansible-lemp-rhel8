@@ -13,5 +13,8 @@ rhel8_list:
     - vim 
     - certbot 
     - python3-certbot
+    - python3-certbot-nginx
+    - python3-certbot-dns-cloudflare
     - net-tools
     - dnf-plugins-core
+    - python3-passlib

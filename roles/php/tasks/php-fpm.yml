@@ -12,7 +12,7 @@
 
 - name: Copyng PHP pool config
   template:
-    src: site.j2
+    src: site.conf.j2
     dest: "/etc/php-fpm.d/{{ site_name }}.conf"
 
 - name: Creating PhpMyAdmin pool directory
@@ -27,6 +27,3 @@
   template:
     src: pma.conf.j2
     dest: "/etc/php-fpm.d/pma.conf"
-
-# /opt/remi/php73/root/
-# /etc/opt/remi/php73/php-fpm.d

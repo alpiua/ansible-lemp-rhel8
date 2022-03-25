@@ -1,0 +1,51 @@
+- name: Installing Secondary PHP
+  dnf:
+    name: "{{ secondary_php_packages }}"
+    state: latest
+  when: 
+    - reinstall_php | default('false')
+
+- name: Creating Secondary PHP-FPM wsdl directories
+  file: 
+    path: "/var/lib/php/wsdlcache-{{ item.name }}"
+    state: directory
+    owner: "{{ site_user_name }}"
+    group: "{{ site_user_name }}"
+    mode: 0750
+  loop: "{{ subdomain }}"
+
+- name: Creating Secondary PHP-FPM session directories
+  file: 
+    path: "/var/lib/php/session-{{ item.name }}"
+    state: directory
+    owner: "{{ site_user_name }}"
+    group: "{{ site_user_name }}"
+    mode: 0750
+  loop: "{{ subdomain }}"
+
+- name: Creating Secondary PHP-FPM opcache directorie
+  file: 
+    path: "/var/lib/php/opcache-{{ item.name }}"
+    state: directory
+    owner: "{{ site_user_name }}"
+    group: "{{ site_user_name }}"
+    mode: 0750
+  loop: "{{ subdomain }}"
+
+- name: Copying PHP pool config for subdomain
+  template:
+    src: subdomain.conf.j2
+    dest: "/etc/opt/remi/{{ php.version }}/php-fpm.d/{{ item.name + '.conf' }}"
+  loop: "{{ subdomain }}"
+  when: php.version == item.php_version
+
+- name: Delete default php-fpm config
+  file: 
+    path: "/etc/opt/remi/{{ php.version }}/php-fpm.d/www.conf"
+    state: absent
+
+- name: Start secondary php-fpm service
+  service:
+    name: "{{ php.version }}-php-fpm"
+    state: started
+    enabled: true

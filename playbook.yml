@@ -3,34 +3,48 @@
 
   vars:
     - admin_user: "support"
-    - site_user_name: "aquatherm"
+    - site_user_name: "tiresua"
+    - site_name: "tires.ua"
+    - prestashop_version: 1.6  
         
   roles:
-      # add ssh and firewall role:
-      #   create sftp users
-      #   sshd_config for secure  and sftp
     - role: common
+          # add ssh and firewall role:
+          #   create sftp users
+          #   sshd_config for secure  and sftp
+          #   unfold zip package with site and import db
+          #   certbot-cloudflare https://certbot-dns-cloudflare.readthedocs.io/en/stable/#credentials
+          #   add catch-try blocks to revert changes if failed (in case we started to install secondary_php for instance)
+      tags: common
+
     - role: nginx
       vars: 
-        - issue_certs: false
-        - site_name: "aquatherm72.ru"
-        - tmp_site_name: "test.aquatherm72.ru"
+        - issue_certs: true
+        - tmp_site_name: "{{ 'tmp.' + site_name }}" # update DNS with tmp.
         - site_template: presta.conf.j2
-        - subdomain:
-          - { name: "dev", template: "subd_presta.conf.j2", php_version: "php73" }
-        
-    - role: mysql
+        - subdomain:                                # update DNS 
+          - { name: "dev", template: "subd_presta.conf.j2", php_version: "php74" } 
+      tags: nginx
+
+    - role: db
+      vars:
+        - install_db: mariadb
+        - install_pma: True                         # update DNS with pma.
+        - databases:
+          - { name: "{{ site_user_name }}", user: "{{ site_user_name }}", pass: "" }
+          - { name: "dev", user: "dev", pass: "" }
       tags: mysql
+
     - role: php
-      tags: php
       vars:
         - system_php: "7.4"  # system php only 7.2,7.3,7.4,8.0,8.1
-        - reinstall_php: false
-        - secondary_php:     # can choose from 5.6 to 8.1
-          - name: php73
-            install: true
+        - reinstall_php: true
+        - install_secondary_php: true    # can choose from 5.6 to 8.1
+        - secondary_php:                  # can choose from 5.6 to 8.1
+          - version: php56
+      tags: php
+
     - role: backup
       vars:
-        - email: "alpi@keemail.me"
+        - email: "alpi@keemail.me"  # same email is using to issue letsencrypt cert
       tags: backup
-      # copy crontask 

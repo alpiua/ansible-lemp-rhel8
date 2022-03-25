@@ -1,0 +1,30 @@
+- import_tasks: install_mysql.yml
+  when: install_db == 'mysql'
+
+- include_tasks: mysql_root.yml
+  when: 
+    - mysql_service.state == 'started'
+    - install_db == 'mysql'
+
+- import_tasks: install_mysql.yml
+  when: install_db == 'mariadb'
+
+- include_tasks: create_db.yml
+  loop: "{{ databases }}"
+  loop_control:
+    loop_var: db
+
+- name: Checking phpMyAdmin Installation
+  stat: 
+    path: /usr/share/phpMyAdmin/config.inc.php
+    #    path: /etc/phpMyAdmin/config.inc.php
+  register: pma_config
+  when: install_pma
+
+- import_tasks: phpmyadmin.yml
+  when: pma_config.stat.exists == False
+
+    #- name: Install the MySQL-Python Library
+    #  pip: 
+    #    name: mysqlclient
+    #    state: present

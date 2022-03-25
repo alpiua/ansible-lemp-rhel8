@@ -7,4 +7,4 @@
       - openssl-devel
       - python3-devel
       - mysql-devel
-    state: present
+    state: "{{ devtools | default('absent')}}"

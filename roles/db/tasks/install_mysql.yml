@@ -1,0 +1,12 @@
+- name: Installing Mysql
+  dnf:
+    name: "{{ mysql_list }}"
+    state: latest
+
+- name: Starting mysql service
+  service: 
+    name: mysqld
+    enabled: yes
+    state: started
+  register: mysql_service
+  

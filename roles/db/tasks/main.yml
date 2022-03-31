@@ -6,7 +6,7 @@
     - mysql_service.state == 'started'
     - install_db == 'mysql'
 
-- import_tasks: install_mysql.yml
+- import_tasks: install_mariadb.yml
   when: install_db == 'mariadb'
 
 - include_tasks: create_db.yml

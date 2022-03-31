@@ -1,33 +1,20 @@
-Installing LEMP for Centos 8
+### Installing LEMP for RedHat 8
 
-Nginx latest + brotli
-Mysql 8
-PHP - multiple versions simultaneously
+*   Basic setup
+*   Nginx latest stable + brotli module compile
+*   Mysql 8 or MariaDB
+*   PHP - multiple versions simultaneously
+*   Letsencrypt certs for subdomains
+*   Backup to google drive script 
+*   Prestashop config templates
 
-2do:
-    admin user sudo 
-    rearrange restart services - make handlers
-    create nologin user for site
-    sftp for user
-    sendmail enable
-    nginx server config
-      remove def config
-    CERTBOT pip3 install certbot-nginx
-    autoissue cert for pma, subdomain
-    logrotate
-    mysql config
-      dnf --enablerepo=epel-testing install python3-mysqlclient
-    mysql database create&import
-    php config
-    unpack files
-    backup, msmtp
+#### 2do: 
 
-    phpmyadmin
-      create nologin user
-      install config
-
-      chown dirs
-      -/var/lib/phpMyAdmin/{upload,wsdlcache}
-      -/usr/share/phpMyAdmin
-
-Check services: playbook that check services on the host after service 
+*   template sshd config: cyphers, sftp
+*   firewalld settings
+*   sftp users: group
+*   role for unfold a website from zip, import db
+*   manage DNS with cloudflare (certbot-cloudflare [https://certbot-dns-cloudflare.readthedocs.io/en/stable)](https://certbot-dns-cloudflare.readthedocs.io/en/stable))
+*   add catch - try blocks to handle errors (php install for instance) 
+*   tune php, mysql configs based on server hardware
+*   add indepotent checks for certbot command

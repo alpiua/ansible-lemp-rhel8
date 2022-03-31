@@ -88,7 +88,7 @@ movebackup "$files" "files"
 movebackup "$database" "database"
 
 log "Backuping database"
-mysqldump -u "$mysqluser" -p"$mysqlpass" "$mysqldb" > "$workdir"/"$site"/"$site".sql
+mysqldump -u "$mysqluser" --password="$mysqlpass" "$mysqldb" > "$workdir"/"$site"/"$site".sql
 
 cd "$workdir"/"$site" ; zip -rq "$database" "$site".sql
 checkjob "$?" "database" "$database" && rm -rf "$site".sql
